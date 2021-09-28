@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Fresnel_Teste
+  m_Shader: {fileID: -6465566751694194690, guid: 20721c4a525d898409bf11c786702263, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_006310b275b44966999c2beb02bb0c02: 0.01
+    - Vector1_21f8389c69344dc8abc9adfbf06fd82a: 1000
+    - Vector1_3529ee5681ba4f53a037d85a06cc02d2: 0.1
+    - Vector1_be5c9cea154f40c5850a934f04cbde4d: 0.01
+    - Vector1_e7e4e83047d543cbb8941585440e2895: 0.05
+    m_Colors:
+    - Color_217bb8704d004ebf82c649daaa9aaab5: {r: 1, g: 1, b: 1, a: 0}
+    - Color_5f89e3e97d63412ca9bf1367895e2909: {r: 0.3301887, g: 0.13861695, b: 0.28623533, a: 0}
+    - Color_86713d8ca2664ce6871a653c805bb6b4: {r: 1, g: 0, b: 0.70213413, a: 0}
+    - Color_99fa19430bc64a48b0acfa8a4878606d: {r: 1, g: 0.77534616, b: 0, a: 0}
+    - Color_9d95580b3a894872bda7e39426715ee4: {r: 1, g: 1, b: 1, a: 0}
+  m_BuildTextureStacks: []
