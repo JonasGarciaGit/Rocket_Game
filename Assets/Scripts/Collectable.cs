@@ -15,6 +15,15 @@ public class Collectable : MonoBehaviour
         starCollected = 0;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag.Equals("Fuel"))
+        {
+            Debug.Log("Colidindo com o combustivel");
+            Destroy(other.gameObject);
+        }
+    }
+
     private void OnParticleCollision(GameObject other)
     {
         GameObject star =  Instantiate(starVfx, transform.position, Quaternion.identity);
