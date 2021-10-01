@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class AsteroidCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private bool canCollide = true;
+    
 
-    private void OnTrigger(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.tag.Equals("Asteroid"))
+        if (collision.gameObject.tag.Equals("Asteroid"))
         {
-            Debug.Log("Colidi com um asteroid");
+            if (canCollide)
+            {
+                Debug.Log("Colidi com um asteroid");
+                canCollide = false;
+                StartCoroutine("CanCollideAgain");
+            }
+            
         }
     }
+
+    IEnumerator CanCollideAgain()
+    {
+        yield return new WaitForSeconds(1f);
+        canCollide = true;
+    }
+
+
 }
