@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class MenuController : MonoBehaviour
     }
 
     public void onClickStart(){
-        Debug.Log("Cliquei no botao start");
+        SceneManager.LoadScene("Fuel_System", LoadSceneMode.Additive);
     }
 
     public void onClickShop(){
