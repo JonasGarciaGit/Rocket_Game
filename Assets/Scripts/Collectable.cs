@@ -9,12 +9,20 @@ public class Collectable : MonoBehaviour
     public Text starsCollectedTxt;
     private int starCollected;
 
+    public int startCollectedNumber;
+
+    public bool havePowerUp;
+
+    [SerializeField]
+    private GameObject powerUpSlot;
     private Fuel fuelScript; 
     private void Start()
     {
+        startCollectedNumber = 1;
         starsCollectedTxt.text = "000";
         starCollected = 0;
-        //fuelScript = this.gameObject.GetComponentInParent<Fuel>();
+        fuelScript = this.gameObject.GetComponentInParent<Fuel>();
+        havePowerUp = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,7 +30,21 @@ public class Collectable : MonoBehaviour
         if (other.tag.Equals("Fuel"))
         {
             Destroy(other.gameObject);
-           // fuelScript.ModifyFuel(20);
+            fuelScript.ModifyFuel(20);
+        }
+
+        if(other.tag.Equals("PowerUp"))
+        {
+            if(havePowerUp){
+                 
+            }else{
+                  GameObject powerUpModel = Instantiate(other.gameObject, powerUpSlot.transform.position, Quaternion.identity);
+                  powerUpModel.transform.parent = powerUpSlot.transform;
+                  Destroy(powerUpModel.GetComponent<Rigidbody>());
+                  powerUpModel.AddComponent<SimpleRotateObject>();
+                  Destroy(other.gameObject);
+                  havePowerUp = true;
+            }
         }
     }
 
@@ -30,7 +52,7 @@ public class Collectable : MonoBehaviour
     {
         GameObject star =  Instantiate(starVfx, transform.position, Quaternion.identity);
        
-        starCollected = starCollected + 1;
+        starCollected = starCollected + startCollectedNumber;
        
         if (starCollected < 10)
         {
