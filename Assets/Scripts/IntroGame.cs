@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IntroGame : MonoBehaviour
 {
@@ -12,12 +13,16 @@ public class IntroGame : MonoBehaviour
     public GameObject platform;
     public GameObject rocket;
     public GameObject vfxPropulsion;
+    public Text stopWatch;
+    private int stopWatchTime;
     public float introSpeed;
     private bool start;
 
     // Start is called before the first frame update
     void Start()
     {
+        stopWatchTime = 10;
+        stopWatch.text = "10";
         rocket.GetComponent<RocketMovementAcelerometer>().enabled = false;
         start = false;
         vfxPropulsion.SetActive(false);
@@ -36,7 +41,6 @@ public class IntroGame : MonoBehaviour
         {
             StartCoroutine("downBackground");
         }
-       
 
         if (background.transform.position.y <= -50)
         {
@@ -60,10 +64,20 @@ public class IntroGame : MonoBehaviour
 
     IEnumerator startGame()
     {
-        yield return new WaitForSeconds(10f);
-        start = true;
-        rocket.GetComponent<RocketMovementAcelerometer>().enabled = true;
-        vfxPropulsion.SetActive(true);
+        while (stopWatchTime != 0)
+        {
+            yield return new WaitForSeconds(1f);
+            stopWatchTime = stopWatchTime - 1;
+            stopWatch.text = stopWatchTime.ToString();
+        }
+
+        if(stopWatchTime == 0)
+        {
+            start = true;
+            rocket.GetComponent<RocketMovementAcelerometer>().enabled = true;
+            vfxPropulsion.SetActive(true);
+            stopWatch.enabled = false;
+        }
     }
 
 }
