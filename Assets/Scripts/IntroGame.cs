@@ -30,7 +30,7 @@ public class IntroGame : MonoBehaviour
         starsCollectable.SetActive(false);
         asteroidSpawner.SetActive(false);
         fuelSpawner.SetActive(false);
-        background.transform.position = new Vector3(background.transform.position.x,84f,12);
+        background.transform.position = new Vector3(background.transform.position.x,84f,50f);
         StartCoroutine("startGame");
     }
 
@@ -57,7 +57,7 @@ public class IntroGame : MonoBehaviour
         while (background.transform.position.y > -50)
         {
             yield return new WaitForSeconds(introSpeed);
-            background.transform.position = new Vector3(background.transform.position.x, background.transform.position.y -1, 12);
+            background.transform.position = new Vector3(background.transform.position.x, background.transform.position.y -1, 50f);
             platform.transform.position = new Vector2(platform.transform.position.x, platform.transform.position.y - 1);
         }
     }
