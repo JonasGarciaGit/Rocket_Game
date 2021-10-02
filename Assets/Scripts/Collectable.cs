@@ -14,7 +14,7 @@ public class Collectable : MonoBehaviour
     {
         starsCollectedTxt.text = "000";
         starCollected = 0;
-        fuelScript = this.gameObject.GetComponentInParent<Fuel>();
+        //fuelScript = this.gameObject.GetComponentInParent<Fuel>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,7 +22,7 @@ public class Collectable : MonoBehaviour
         if (other.tag.Equals("Fuel"))
         {
             Destroy(other.gameObject);
-            fuelScript.ModifyFuel(20);
+           // fuelScript.ModifyFuel(20);
         }
     }
 

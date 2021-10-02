@@ -23,12 +23,6 @@ public class AsteroidSpawner : MonoBehaviour
         int randomInt = random.Next(0, 4);
         GameObject asteroid = Instantiate(asteroidPrefabs[randomInt]) as GameObject;
         asteroid.transform.position = new Vector3(UnityEngine.Random.Range(-screenBounds.x, screenBounds.x), screenBounds.y * 2, 0f);
-
-        if (asteroid.transform.position.y < (screenBounds.y *-1))
-        {
-            Destroy(asteroid);
-        }
-
     }
 
     IEnumerator asteroidWave()
