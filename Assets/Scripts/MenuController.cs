@@ -48,7 +48,7 @@ public class MenuController : MonoBehaviour
             Transform powerUp = powerUpSlot.transform.GetChild(0);
             Debug.Log(powerUp.name);
 
-            if("shieldPowerUp(Clone)".Equals(powerUp.name)){
+            if("shieldPowerUp(Clone)(Clone)".Equals(powerUp.name)){
                 showFloatingText("Shield up!");
                 rocket.GetComponent<Collectable>().havePowerUp = false;
                 GameObject shield = Instantiate(powerUp.gameObject,rocket.transform.position,Quaternion.identity);
@@ -58,7 +58,7 @@ public class MenuController : MonoBehaviour
                 StartCoroutine(waitForSecondsPowerUpShield(shield));
             }
 
-            if("powerUpX2(Clone)".Equals(powerUp.name)){
+            if("powerUpX2(Clone)(Clone)".Equals(powerUp.name)){
                 showFloatingText("x2 Starts!");
                 rocket.GetComponent<Collectable>().havePowerUp = false;
                 StartCoroutine(waitForSecondsX2Star(10f));

@@ -11,8 +11,8 @@ public class Fuel : MonoBehaviour
 
 
     private float timer = 0f;
-    [SerializeField]
-    private float controlTimer;
+    
+    public float controlTimer;
 
     public event Action<float> OnFuelPctChanged = delegate {};
 

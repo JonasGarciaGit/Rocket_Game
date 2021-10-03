@@ -13,10 +13,16 @@ public class IntroGame : MonoBehaviour
     public GameObject platform;
     public GameObject rocket;
     public GameObject vfxPropulsion;
+    public GameObject powerUpSpawner;
     public Text stopWatch;
     private int stopWatchTime;
     public float introSpeed;
     private bool start;
+    private float controlTimerTemp;
+
+    public GameObject fuelBar;
+    public GameObject fuelFill;
+    public GameObject powerUpButton;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +36,12 @@ public class IntroGame : MonoBehaviour
         starsCollectable.SetActive(false);
         asteroidSpawner.SetActive(false);
         fuelSpawner.SetActive(false);
+        powerUpSpawner.SetActive(false);
+        fuelBar.SetActive(false);
+        fuelFill.SetActive(false);
+        powerUpButton.SetActive(false);
+        controlTimerTemp = rocket.GetComponent<Fuel>().controlTimer;
+        rocket.GetComponent<Fuel>().controlTimer = 1000f;
         background.transform.position = new Vector3(background.transform.position.x,84f,50f);
         StartCoroutine("startGame");
     }
@@ -48,6 +60,11 @@ public class IntroGame : MonoBehaviour
             starsCollectable.SetActive(true);
             asteroidSpawner.SetActive(true);
             fuelSpawner.SetActive(true);
+            powerUpSpawner.SetActive(true);
+            fuelBar.SetActive(true);
+            fuelFill.SetActive(true);
+            powerUpButton.SetActive(true);
+            rocket.GetComponent<Fuel>().controlTimer = controlTimerTemp;
         }
     }
 
