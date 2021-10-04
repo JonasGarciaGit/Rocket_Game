@@ -16,9 +16,9 @@ public class AsteroidCollision : MonoBehaviour
             {
                 Debug.Log("Colidi com um asteroid");
                 canCollide = false;
-                StartCoroutine("CanCollideAgain");
+                gameObject.GetComponent<RocketDestroy>().onDie();
+                StartCoroutine("CanCollideAgain");         
             }
-            
         }
     }
 

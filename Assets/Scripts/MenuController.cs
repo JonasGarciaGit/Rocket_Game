@@ -18,6 +18,28 @@ public class MenuController : MonoBehaviour
 
     public GameObject floatingText;
 
+    public GameObject shopInterface;
+
+    public Text starsAmount;
+
+    public GameObject [] rocketsPrefabs;
+    public int [] rocketsPrice;
+
+    public GameObject rocketSlot;
+
+    [SerializeField]
+    private Text rocketPrice;
+
+    private int controlRocketList;
+
+    public GameObject startButton;
+    public GameObject shopButton;
+    public GameObject howPlayButton;
+
+    public GameObject buyButton;
+    public GameObject equipButton;
+    private GameObject rocketModel; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,12 +52,77 @@ public class MenuController : MonoBehaviour
         
     }
 
+    public void onClickArrowRight(){
+        if(controlRocketList < rocketsPrefabs.Length - 1){
+            controlRocketList += 1;
+        }else{
+            controlRocketList = 0;
+        }
+        loadRocketModel();
+
+        Debug.Log(controlRocketList);
+    }
+
+    public void onClickArrowLeft(){
+        controlRocketList -= 1;
+
+        if(controlRocketList < 0){
+            controlRocketList = rocketsPrefabs.Length - 1;
+        }
+        
+        loadRocketModel();
+
+        Debug.Log(controlRocketList);
+    }
+
+
+    public void onClickBuy(){
+
+       int myPoints  = PlayerPrefs.GetInt("Stars");
+       int rocketValue = rocketsPrice[controlRocketList];
+       float finalValue = Mathf.Round(myPoints - rocketValue);
+        if(finalValue >= 0){
+            Debug.Log("Compra efetuada com sucesso");
+            buyButton.SetActive(false);
+            equipButton.SetActive(true);
+            PlayerPrefs.SetString("Rocket_Number_" + rocketsPrefabs[controlRocketList], "Purchased");
+            PlayerPrefs.SetInt("Stars", (int) finalValue);
+            loadStarsAmount();
+        }else{
+            Debug.Log("Saldo insuficiente");
+        }
+
+    }
+
+    public void onClickEquip(){
+        Debug.Log("Euip button pressionado");
+    }
+
     public void onClickStart(){
-        SceneManager.LoadScene("Fuel_System", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("Scene_Merging");
     }
 
     public void onClickShop(){
-        Debug.Log("Cliquei no botao shop");
+        shopInterface.SetActive(true);
+        startButton.SetActive(false);
+        howPlayButton.SetActive(false);
+        shopButton.SetActive(false);
+        controlRocketList = 0;
+        loadRocketModel();
+        loadStarsAmount();
+    }
+
+    public void closeInterface(GameObject uiGame){
+        uiGame.SetActive(false);
+        startButton.SetActive(true);
+        howPlayButton.SetActive(true);
+        shopButton.SetActive(true);
+        try{
+            Destroy(rocketModel);
+        }catch{
+
+        }
+        
     }
 
     public void onClickHowPlay(){
@@ -97,4 +184,32 @@ public class MenuController : MonoBehaviour
         textFloating.GetComponent<TextMesh>().text = text;
         Destroy(textFloating,0.7f);
     }
+
+    void loadStarsAmount(){
+        int stars = PlayerPrefs.GetInt("Stars");
+        starsAmount.text = stars.ToString();
+    }
+
+    void loadRocketModel(){
+        try{
+            Destroy(rocketModel);
+        }catch{
+
+        }
+        string purchasedConfirmation = PlayerPrefs.GetString("Rocket_Number_" + rocketsPrefabs[controlRocketList]);
+
+        if(purchasedConfirmation.Equals("Purchased")){
+            buyButton.SetActive(false);
+            equipButton.SetActive(true);
+        }else{
+            buyButton.SetActive(true);
+            equipButton.SetActive(false);
+        }
+
+        rocketModel = Instantiate(rocketsPrefabs[controlRocketList], rocketSlot.transform.position, Quaternion.identity);
+        rocketModel.transform.localScale = new Vector3(3,3,3);
+        rocketModel.AddComponent<SimpleRotateObject>();
+        rocketPrice.text = rocketsPrice[controlRocketList].ToString();
+    }
+
 }

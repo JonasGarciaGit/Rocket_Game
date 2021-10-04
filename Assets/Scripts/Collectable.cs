@@ -16,6 +16,9 @@ public class Collectable : MonoBehaviour
     [SerializeField]
     private GameObject powerUpSlot;
     private Fuel fuelScript; 
+
+    public static Collectable Instance {get;private set;}
+
     private void Start()
     {
         startCollectedNumber = 1;
@@ -77,5 +80,8 @@ public class Collectable : MonoBehaviour
         Destroy(obj);
     }
 
+    public int getStarsAmount(){
+        return starCollected;
+    }
 
 }

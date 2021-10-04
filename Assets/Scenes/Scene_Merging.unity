@@ -274,6 +274,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxFuel: 100
   controlTimer: 4
+--- !u!114 &49345213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49345205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698e1a12f0a488e4da9e3810f1940785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &162100098
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +662,7 @@ MonoBehaviour:
   rocket: {fileID: 49345205}
   powerUpDuration: 5
   floatingText: {fileID: 589252630151549606, guid: 322a69a1e33ec19408e7b9b988192756, type: 3}
+  shopInterface: {fileID: 0}
 --- !u!114 &368352251
 MonoBehaviour:
   m_ObjectHideFlags: 0
