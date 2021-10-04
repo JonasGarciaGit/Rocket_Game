@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fresnel_Teste
-  m_Shader: {fileID: -6465566751694194690, guid: 561a213569f6aac42befb67aa63ba3f1, type: 3}
+  m_Name: BlackHoleMat
+  m_Shader: {fileID: -6465566751694194690, guid: 640ccb99b4ff2b74eb1c3193795d0981, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,6 +19,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_bd5c76d7f8ff4881b810b2eefc107b00:
+        m_Texture: {fileID: 2800000, guid: ada981c1cf38454429f8e36b5f053a5a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -31,17 +35,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_006310b275b44966999c2beb02bb0c02: 0.01
-    - Vector1_21f8389c69344dc8abc9adfbf06fd82a: 1000
-    - Vector1_3529ee5681ba4f53a037d85a06cc02d2: 0.1
-    - Vector1_be5c9cea154f40c5850a934f04cbde4d: 0.01
-    - Vector1_e7e4e83047d543cbb8941585440e2895: 0.05
+    m_Floats: []
     m_Colors:
-    - Color_04012419ebd940f4a2eb000ec3a99e73: {r: 0, g: 0, b: 0, a: 0}
-    - Color_217bb8704d004ebf82c649daaa9aaab5: {r: 1, g: 1, b: 1, a: 0}
-    - Color_5f89e3e97d63412ca9bf1367895e2909: {r: 0, g: 0, b: 0, a: 0}
-    - Color_86713d8ca2664ce6871a653c805bb6b4: {r: 0, g: 0, b: 0, a: 0}
-    - Color_99fa19430bc64a48b0acfa8a4878606d: {r: 0.6226415, g: 0, b: 0.44876847, a: 0}
-    - Color_9d95580b3a894872bda7e39426715ee4: {r: 1, g: 1, b: 1, a: 0}
+    - Color_daeeb6c7ccd64822b124d15321164816: {r: 4.080806, g: 4.080806, b: 4.080806, a: 1}
   m_BuildTextureStacks: []

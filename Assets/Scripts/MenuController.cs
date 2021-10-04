@@ -38,7 +38,9 @@ public class MenuController : MonoBehaviour
 
     public GameObject buyButton;
     public GameObject equipButton;
-    private GameObject rocketModel; 
+    private GameObject rocketModel;
+
+    ParticleSystem starParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -151,7 +153,7 @@ public class MenuController : MonoBehaviour
                 StartCoroutine(waitForSecondsX2Star(10f));
             }
 
-
+           
             Destroy(powerUp.gameObject);
         }catch{
            Debug.Log("Erro ao intanciar");

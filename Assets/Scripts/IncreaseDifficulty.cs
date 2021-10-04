@@ -124,12 +124,12 @@ public class IncreaseDifficulty : MonoBehaviour
 
     IEnumerator fadeOutSprite()
     {
-        for (float f = 1f; f >= 0f; f -= 0.1f)
+        for (float f = 1f; f >= 0f; f -= 0.20f)
         {
             Color c = backgroundRenderer.color;
             c.a = f;
             backgroundRenderer.color = c;
-            yield return new WaitForSeconds(2.5f);
+            yield return new WaitForSeconds(5f);
         }
     }
 
