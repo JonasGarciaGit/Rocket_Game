@@ -40,7 +40,6 @@ public class EventControlSystem : MonoBehaviour
             
 
             int randomEvent = Random.Range(0,numberEvents);
-
             if(randomEvent == 0){
                 this.gameObject.GetComponent<SolarStorm>().initializeSolarStorm();
                 hasStarted = true;

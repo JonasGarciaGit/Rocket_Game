@@ -10,9 +10,7 @@ public class Playlist : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = this.gameObject.GetComponent<AudioSource>();
-        audioSource.loop = false;
-        audioSource.volume = 0.1f;
+        StartCoroutine("startPlaylist");
     }
 
     private AudioClip GetRandomClip()
@@ -30,10 +28,22 @@ public class Playlist : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!audioSource.isPlaying)
+        if (audioSource != null)
         {
-            audioSource.clip = GetRandomClip();
-            audioSource.Play();
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = GetRandomClip();
+                audioSource.Play();
+            }
         }
+        
+    }
+
+    IEnumerator startPlaylist()
+    {
+        yield return new WaitForSeconds(15f);
+        audioSource = this.gameObject.GetComponent<AudioSource>();
+        audioSource.loop = false;
+        audioSource.volume = 0.1f;
     }
 }

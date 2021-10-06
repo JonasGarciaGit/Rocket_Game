@@ -16,25 +16,32 @@ public class BlackHoleCollision : MonoBehaviour
 
     private bool canDestroyBlackHoles;
 
+    private bool canExecuteEvent;
+
     private void Start()
     {
         score = GameObject.Find("ScoreTxt").GetComponent<IncreaseScore>().scorePoints;
         starBackground = GameObject.Find("Stars").GetComponent<ParticleSystem>();
         rocket = GameObject.Find("Rocket_Sculpt");
         canDestroyBlackHoles = false;
+        canExecuteEvent = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        int fiftyFifty = random.Next(1, 3);
-        if (fiftyFifty == 1)
+        if (other.name.Equals("Rocket_Sculpt") && canExecuteEvent)
         {
-            stopEvent(-300);
+            int fiftyFifty = random.Next(1, 3);
+            if (fiftyFifty == 1)
+            {
+                stopEvent(-300);
+            }
+            else
+            {
+                stopEvent(300);
+            }
         }
-        else
-        {
-            stopEvent(300);
-        }
+      
     }
 
     private void stopEvent(int value)
@@ -43,6 +50,7 @@ public class BlackHoleCollision : MonoBehaviour
         scoreInt = scoreInt + (value);
         GameObject.Find("ScoreTxt").GetComponent<IncreaseScore>().points = scoreInt;
         GameObject.Find("SpecialEvents").GetComponent<BlackHoleEvent>().insideBlackHole = true;
+        Debug.Log("Cheguei aqui antes da rotina");
         StartCoroutine("increaseBackgroundSpeed");
         GameObject.Find("SpecialEvents").GetComponent<BlackHoleEvent>().enabled = false;
     }
@@ -52,10 +60,13 @@ public class BlackHoleCollision : MonoBehaviour
         float originalPlaySpeed = starBackground.playbackSpeed;
         starBackground.playbackSpeed = 10f;
         rocket.SetActive(false);
-        yield return new WaitForSecondsRealtime(2f);
+        Debug.Log("Cheguei aqui e desabilitei o rocket");
+        yield return new WaitForSeconds(2f);
         rocket.SetActive(true);
+        Debug.Log("Cheguei aqui e habilitei o rocket");
         starBackground.playbackSpeed = originalPlaySpeed;
         canDestroyBlackHoles = true;
+        canExecuteEvent = false;
         GameObject.Find("SpecialEvents").GetComponent<BlackHoleEvent>().insideBlackHole = false;
     }
 

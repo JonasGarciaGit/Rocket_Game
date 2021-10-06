@@ -27,32 +27,34 @@ public class IncreaseDifficulty : MonoBehaviour
         if (distance == 1)
         {
             backgroundRenderer.gameObject.SetActive(true);
+            backgroundRenderer.gameObject.transform.position = new Vector3(-3.3f, 80f, 45f);
             backgroundRenderer.sprite = bkImages[0];
         }
         else if (distance == 3)
         {
             backgroundRenderer.flipX = true;
+            backgroundRenderer.gameObject.transform.position = new Vector3(-3.3f, 80f, 45f);
             backgroundRenderer.sprite = bkImages[1];
         }
         else if (distance == 4)
         {
             backgroundRenderer.flipX = false;
-            backgroundRenderer.gameObject.transform.position = new Vector3(16f, 9.8f, 45f);
+            backgroundRenderer.gameObject.transform.position = new Vector3(16f, 80f, 45f);
             backgroundRenderer.sprite = bkImages[2];
         }
         else if (distance == 6)
         {
-            backgroundRenderer.gameObject.transform.position = new Vector3(-9.8f, 9.8f, 45f);
+            backgroundRenderer.gameObject.transform.position = new Vector3(-9.8f, 80f, 45f);
             backgroundRenderer.sprite = bkImages[3];
         }
         else if (distance == 8)
         {
-            backgroundRenderer.gameObject.transform.position = new Vector3(-9.8f, 9.8f, 45f);
+            backgroundRenderer.gameObject.transform.position = new Vector3(-9.8f, 80f, 45f);
             backgroundRenderer.sprite = bkImages[4];
         }
         else if (distance == 9)
         {
-            backgroundRenderer.gameObject.transform.position = new Vector3(-3.3f, 9.8f, 45f);
+            backgroundRenderer.gameObject.transform.position = new Vector3(-3.3f, 80f, 45f);
             backgroundRenderer.sprite = bkImages[5];
         }
     }

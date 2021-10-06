@@ -33,6 +33,7 @@ public class IntroGame : MonoBehaviour
         stopWatchTime = 10;
         stopWatch.text = "10";
         rocket.GetComponent<RocketMovementAcelerometer>().enabled = false;
+        rocket.GetComponent<RocketMovement>().enabled = false;
         start = false;
         vfxPropulsion.SetActive(false);
         starsBackground.SetActive(false);
@@ -96,7 +97,8 @@ public class IntroGame : MonoBehaviour
         if(stopWatchTime == 0)
         {
             start = true;
-            rocket.GetComponent<RocketMovementAcelerometer>().enabled = true;
+            // rocket.GetComponent<RocketMovementAcelerometer>().enabled = true;
+            rocket.GetComponent<RocketMovement>().enabled = true;
             vfxPropulsion.SetActive(true);
             stopWatch.enabled = false;
         }
