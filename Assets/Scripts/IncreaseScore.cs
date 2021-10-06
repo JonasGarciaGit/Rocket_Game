@@ -8,7 +8,8 @@ public class IncreaseScore : MonoBehaviour
     public Text scorePoints;
     private bool gameOver;
     public float increasePointSpeed;
-    private int points;
+    [SerializeField]
+    public int points;
     public int pointsPerSecond;
 
     private int bestScore;

@@ -46,8 +46,12 @@ public class EventControlSystem : MonoBehaviour
                 hasStarted = true;
                 timer = 0f;
                 floatingTextEvent.SetActive(false);
-            }else{
-                Debug.Log("Nenhum evento selecionado");
+            }else if(randomEvent == 1){
+                this.gameObject.GetComponent<BlackHoleEvent>().enabled = true;
+                hasStarted = true;
+                timer = 0f;
+                floatingTextEvent.SetActive(false);
+
             }
 
         }
