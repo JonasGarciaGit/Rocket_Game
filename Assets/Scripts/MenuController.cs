@@ -9,6 +9,7 @@ using TMPro;
 public class MenuController : MonoBehaviour
 {
 
+    public GameObject musicComponents;
     public Toggle musicToggleControl;
     public Sprite musicTurnOn;
     public Sprite musicTurnOff; 
@@ -48,6 +49,8 @@ public class MenuController : MonoBehaviour
     public bool isEventSolarOn = false;
 
     public AudioSource audioSource;
+
+    public GameObject titleMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -126,6 +129,8 @@ public class MenuController : MonoBehaviour
         startButton.SetActive(true);
         howPlayButton.SetActive(true);
         shopButton.SetActive(true);
+        titleMenu.SetActive(true);
+        musicComponents.SetActive(true);
         try{
             Destroy(rocketModel);
         }catch{
@@ -139,6 +144,8 @@ public class MenuController : MonoBehaviour
         startButton.SetActive(false);
         howPlayButton.SetActive(false);
         shopButton.SetActive(false);
+        titleMenu.SetActive(false);
+        musicComponents.SetActive(false);
     }
 
     public void onClickPowerUp(GameObject powerUpSlot){
