@@ -11,6 +11,13 @@ public class IncreaseScore : MonoBehaviour
     private int points;
     public int pointsPerSecond;
 
+    private int bestScore;
+
+    public GameObject newScoreAlert;
+
+    private bool triggerNewScore = false;
+    public static IncreaseScore Instance {get;private set;}
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +25,15 @@ public class IncreaseScore : MonoBehaviour
         scorePoints.text = points.ToString();
         gameOver = false;
         StartCoroutine("gameStarted");
+        bestScore = PlayerPrefs.GetInt("Score");
     }
 
     private void Update()
     {
+        if(points > bestScore && triggerNewScore == false && bestScore != 0){
+            StartCoroutine(showEventAlert());
+        }
+
         scorePoints.text = points.ToString();
     }
 
@@ -38,5 +50,17 @@ public class IncreaseScore : MonoBehaviour
             yield return new WaitForSeconds(increasePointSpeed);
             points = points + pointsPerSecond;
         }
+    }
+
+    public int getPointsAmount(){
+        return this.points;
+    }
+
+    IEnumerator showEventAlert(){
+            triggerNewScore = true;
+            newScoreAlert.SetActive(true);
+            newScoreAlert.GetComponent<TextMesh>().text = "NEW RECORD!";
+            yield return new WaitForSeconds(1f);
+            newScoreAlert.SetActive(false);
     }
 }

@@ -38,9 +38,12 @@ public class MenuController : MonoBehaviour
 
     public GameObject buyButton;
     public GameObject equipButton;
-    private GameObject rocketModel;
+    private GameObject rocketModel; 
 
-    ParticleSystem starParticle;
+    public Button powerUpBt;
+    public GameObject starsParticle;
+
+    public bool isEventSolarOn = false;
 
     // Start is called before the first frame update
     void Start()
@@ -134,8 +137,10 @@ public class MenuController : MonoBehaviour
     public void onClickPowerUp(GameObject powerUpSlot){
         try{
 
+            if(!isEventSolarOn){
+
             Transform powerUp = powerUpSlot.transform.GetChild(0);
-            Debug.Log(powerUp.name);
+
 
             if("shieldPowerUp(Clone)(Clone)".Equals(powerUp.name)){
                 showFloatingText("Shield up!");
@@ -153,8 +158,20 @@ public class MenuController : MonoBehaviour
                 StartCoroutine(waitForSecondsX2Star(10f));
             }
 
-           
+            if("MagnecticItem(Clone)(Clone)".Equals(powerUp.name)){
+                showFloatingText("Magnetism up!");
+                rocket.GetComponent<Collectable>().havePowerUp = false;
+                StartCoroutine(waitForSecondsMagnetism());
+            }
+
+
             Destroy(powerUp.gameObject);
+
+            } else {
+                showFloatingText("Can't use yet");
+            }
+
+
         }catch{
            Debug.Log("Erro ao intanciar");
         }
@@ -171,7 +188,9 @@ public class MenuController : MonoBehaviour
     }
 
     IEnumerator waitForSecondsPowerUpShield(GameObject powerUp){
+        rocket.GetComponent<AsteroidCollision>().shieldIsUp = true;
         yield return new WaitForSeconds(powerUpDuration);
+        rocket.GetComponent<AsteroidCollision>().shieldIsUp = false;
         Destroy(powerUp);
     }
 
@@ -179,6 +198,12 @@ public class MenuController : MonoBehaviour
         rocket.GetComponent<Collectable>().startCollectedNumber = 2;
         yield return new WaitForSeconds(time);
         rocket.GetComponent<Collectable>().startCollectedNumber = 1;
+    }
+
+    IEnumerator waitForSecondsMagnetism(){
+        starsParticle.GetComponent<ParticleAttract>().speed =  5f;
+        yield return new WaitForSeconds(10f);
+        starsParticle.GetComponent<ParticleAttract>().speed =  0f;
     }
 
     void showFloatingText(string text){

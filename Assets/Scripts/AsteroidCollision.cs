@@ -7,16 +7,23 @@ public class AsteroidCollision : MonoBehaviour
 
     private bool canCollide = true;
     
+    private int collisionCount = 0;
+
+    public bool shieldIsUp = false;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag.Equals("Asteroid"))
         {
-            if (canCollide)
+            if (canCollide && shieldIsUp == false)
             {
-                Debug.Log("Colidi com um asteroid");
+                collisionCount += 1;
                 canCollide = false;
-                gameObject.GetComponent<RocketDestroy>().onDie();
+
+                if(collisionCount > 3){
+                    gameObject.GetComponent<RocketDestroy>().onDie();
+                }
+                
                 StartCoroutine("CanCollideAgain");         
             }
         }

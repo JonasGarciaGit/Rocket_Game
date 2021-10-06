@@ -9,6 +9,7 @@ public class Fuel : MonoBehaviour
     private int maxFuel = 100;
     private int currentFuel;
 
+    public int decaySpeed;
 
     private float timer = 0f;
     
@@ -18,7 +19,8 @@ public class Fuel : MonoBehaviour
 
 
     private void OnEnable() {
-        currentFuel = maxFuel;    
+        currentFuel = maxFuel;
+        decaySpeed = -10;    
     }
 
     public void ModifyFuel(int amount){
@@ -39,7 +41,7 @@ public class Fuel : MonoBehaviour
     {
         timer += Time.deltaTime;
         if(timer >= controlTimer){
-            ModifyFuel(-10);
+            ModifyFuel(decaySpeed);
             timer = 0f;
         }
            

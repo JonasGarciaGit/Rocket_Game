@@ -13,16 +13,19 @@ public class IntroGame : MonoBehaviour
     public GameObject platform;
     public GameObject rocket;
     public GameObject vfxPropulsion;
-  //  public GameObject powerUpSpawner;
+    public GameObject powerUpSpawner;
     public Text stopWatch;
     private int stopWatchTime;
     public float introSpeed;
     private bool start;
     private float controlTimerTemp;
 
-   // public GameObject fuelBar;
-    //public GameObject fuelFill;
-   // public GameObject powerUpButton;
+    public GameObject fuelBar;
+    public GameObject fuelFill;
+    public GameObject powerUpButton;
+    public Material materialPowerUp;
+
+    public Text bestScore;
 
     // Start is called before the first frame update
     void Start()
@@ -36,13 +39,15 @@ public class IntroGame : MonoBehaviour
         starsCollectable.SetActive(false);
         asteroidSpawner.SetActive(false);
         fuelSpawner.SetActive(false);
-     //   powerUpSpawner.SetActive(false);
-       // fuelBar.SetActive(false);
-       // fuelFill.SetActive(false);
-      //  powerUpButton.SetActive(false);
-     //   controlTimerTemp = rocket.GetComponent<Fuel>().controlTimer;
-      //  rocket.GetComponent<Fuel>().controlTimer = 1000f;
+        powerUpSpawner.SetActive(false);
+        fuelBar.SetActive(false);
+        fuelFill.SetActive(false);
+        materialPowerUp.SetColor("Color_ba20f8732d69407d8e52f3d6041799d7",new Color(255,255,255,250) / 30);
+        powerUpButton.SetActive(false);
+        controlTimerTemp = rocket.GetComponent<Fuel>().controlTimer;
+        rocket.GetComponent<Fuel>().controlTimer = 1000f;
         background.transform.position = new Vector3(background.transform.position.x,84f,50f);
+        bestScore.text = PlayerPrefs.GetInt("Score").ToString();
         StartCoroutine("startGame");
     }
 
@@ -60,11 +65,11 @@ public class IntroGame : MonoBehaviour
             starsCollectable.SetActive(true);
             asteroidSpawner.SetActive(true);
             fuelSpawner.SetActive(true);
-         //   powerUpSpawner.SetActive(true);
-          //  fuelBar.SetActive(true);
-          //  fuelFill.SetActive(true);
-         //   powerUpButton.SetActive(true);
-         //   rocket.GetComponent<Fuel>().controlTimer = controlTimerTemp;
+            powerUpSpawner.SetActive(true);
+            fuelBar.SetActive(true);
+            fuelFill.SetActive(true);
+            powerUpButton.SetActive(true);
+            rocket.GetComponent<Fuel>().controlTimer = controlTimerTemp;
         }
     }
 
