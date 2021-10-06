@@ -61,7 +61,7 @@ public class IncreaseDifficulty : MonoBehaviour
     {
         while(distance != 9)
         {
-            yield return new WaitForSeconds(30f);
+            yield return new WaitForSeconds(120f);
             this.distance = this.distance + 1;
 
             asteroidRespawn.GetComponent<AsteroidSpawner>().respawnTime = asteroidRespawn.GetComponent<AsteroidSpawner>().respawnTime - 0.02f;
@@ -77,7 +77,7 @@ public class IncreaseDifficulty : MonoBehaviour
     {
         while(distance != 9)
         {
-            yield return new WaitForSeconds(30f);
+            yield return new WaitForSeconds(120f);
             if (distance == 1)
             {
                 StartCoroutine("fadeOutSprite");
@@ -129,7 +129,7 @@ public class IncreaseDifficulty : MonoBehaviour
             Color c = backgroundRenderer.color;
             c.a = f;
             backgroundRenderer.color = c;
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(20f);
         }
     }
 
