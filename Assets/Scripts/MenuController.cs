@@ -20,6 +20,8 @@ public class MenuController : MonoBehaviour
 
     public GameObject shopInterface;
 
+    public GameObject howPlayInterface;
+
     public Text starsAmount;
 
     public GameObject [] rocketsPrefabs;
@@ -44,6 +46,8 @@ public class MenuController : MonoBehaviour
     public GameObject starsParticle;
 
     public bool isEventSolarOn = false;
+
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -131,7 +135,10 @@ public class MenuController : MonoBehaviour
     }
 
     public void onClickHowPlay(){
-        Debug.Log("Cliquei no botao de como jogar");
+        howPlayInterface.SetActive(true);
+        startButton.SetActive(false);
+        howPlayButton.SetActive(false);
+        shopButton.SetActive(false);
     }
 
     public void onClickPowerUp(GameObject powerUpSlot){
@@ -182,8 +189,10 @@ public class MenuController : MonoBehaviour
     public void controlMusic(){
         if(musicToggleControl.isOn == true){
             musicToggleControl.GetComponentInChildren<Image>().sprite = musicTurnOn;
+            audioSource.mute = false;
         }else{
             musicToggleControl.GetComponentInChildren<Image>().sprite = musicTurnOff;
+            audioSource.mute = true;
         }
     }
 
