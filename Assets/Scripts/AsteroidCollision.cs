@@ -11,6 +11,8 @@ public class AsteroidCollision : MonoBehaviour
 
     public bool shieldIsUp = false;
 
+    public MenuController menuController;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag.Equals("Asteroid"))
@@ -19,6 +21,7 @@ public class AsteroidCollision : MonoBehaviour
             {
                 collisionCount += 1;
                 canCollide = false;
+                menuController.showFloatingText(collisionCount + " collision");
 
                 if(collisionCount > 3){
                     gameObject.GetComponent<RocketDestroy>().onDie();

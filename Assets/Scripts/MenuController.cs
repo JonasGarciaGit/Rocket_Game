@@ -193,6 +193,14 @@ public class MenuController : MonoBehaviour
      
     }
 
+    public void onClickReturnToMenu(){
+        SceneManager.LoadScene("Menu_Rocket");
+    }
+
+    public void onClickRestart(){
+        SceneManager.LoadScene("Scene_Merging");
+    }
+
     public void controlMusic(){
         if(musicToggleControl.isOn == true){
             musicToggleControl.GetComponentInChildren<Image>().sprite = musicTurnOn;
@@ -222,7 +230,7 @@ public class MenuController : MonoBehaviour
         starsParticle.GetComponent<ParticleAttract>().speed =  0f;
     }
 
-    void showFloatingText(string text){
+    public void showFloatingText(string text){
         var textFloating = Instantiate(floatingText, rocket.transform.position, Quaternion.identity, rocket.transform);
         textFloating.GetComponent<TextMesh>().text = text;
         Destroy(textFloating,0.7f);

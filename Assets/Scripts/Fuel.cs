@@ -44,6 +44,9 @@ public class Fuel : MonoBehaviour
             ModifyFuel(decaySpeed);
             timer = 0f;
         }
-           
+        
+        if(currentFuel <= 0){
+            this.gameObject.GetComponent<RocketDestroy>().onDie();
+        }
     }
 }
