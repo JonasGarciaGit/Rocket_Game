@@ -10,7 +10,12 @@ public class Playlist : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("startPlaylist");
+        string canPlay = PlayerPrefs.GetString("playMusic");
+        
+        if("Y".Equals(canPlay)){
+            StartCoroutine("startPlaylist");
+        }
+        
     }
 
     private AudioClip GetRandomClip()

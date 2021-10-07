@@ -55,7 +55,13 @@ public class MenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+            
+            if("Menu_Rocket".Equals(SceneManager.GetActiveScene().name)){
+                this.controlMusic();
+            }
+            
 
+        
     }
 
     // Update is called once per frame
@@ -202,12 +208,20 @@ public class MenuController : MonoBehaviour
     }
 
     public void controlMusic(){
-        if(musicToggleControl.isOn == true){
+        
+
+        if(!PlayerPrefs.GetString("playMusic").Equals("Y") && !PlayerPrefs.GetString("playMusic").Equals("N") ){
+            PlayerPrefs.SetString("playMusic","Y");
+        }
+
+        if(!"Y".Equals(PlayerPrefs.GetString("playMusic"))){
             musicToggleControl.GetComponentInChildren<Image>().sprite = musicTurnOn;
             audioSource.mute = false;
+            PlayerPrefs.SetString("playMusic","Y");
         }else{
             musicToggleControl.GetComponentInChildren<Image>().sprite = musicTurnOff;
             audioSource.mute = true;
+            PlayerPrefs.SetString("playMusic","N");
         }
     }
 

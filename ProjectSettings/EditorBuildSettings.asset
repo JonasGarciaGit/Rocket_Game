@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Fuel_System.unity
     guid: b42387670cb605a4eb09b6bcc110e454
   - enabled: 1
+    path: Assets/Scenes/Scene_Merging.unity
+    guid: ecdc77acc9b0a96498350eceea3c1191
+  - enabled: 0
     path: Assets/Scenes/Scene_Merging1.unity
     guid: ef88b4a3617fd4a4a9da305df84c77eb
   m_configObjects: {}
