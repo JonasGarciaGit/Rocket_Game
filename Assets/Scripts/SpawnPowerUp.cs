@@ -31,7 +31,6 @@ public class SpawnPowerUp : MonoBehaviour
     {
         System.Random random = new System.Random();
         int randomInt = random.Next(0, powerUps.Length);
-        Debug.Log(randomInt);
         GameObject powerUp = Instantiate(powerUps[randomInt]) as GameObject;
         powerUp.transform.position = new Vector3(UnityEngine.Random.Range(-screenBounds.x, screenBounds.x), screenBounds.y * 2, 0f);
         Destroy(powerUp, 5f);

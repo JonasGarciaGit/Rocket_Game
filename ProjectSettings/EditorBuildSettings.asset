@@ -14,10 +14,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Fuel_System.unity
     guid: b42387670cb605a4eb09b6bcc110e454
-  - enabled: 1
-    path: Assets/Scenes/Scene_Merging.unity
+  - enabled: 0
+    path: Assets/Scenes/Scene_Merging2.unity
     guid: ecdc77acc9b0a96498350eceea3c1191
   - enabled: 0
     path: Assets/Scenes/Scene_Merging1.unity
     guid: ef88b4a3617fd4a4a9da305df84c77eb
-  m_configObjects: {}
+  - enabled: 1
+    path: Assets/Scenes/Scene_Merging.unity
+    guid: 5871b8a8e241e7146a2ef0c303f0a5f9
+  m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 2363a1e6eaa51484e96eb4c5af89dc0d, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: d44e07c1a0f1f4245a0be828303cb873, type: 2}

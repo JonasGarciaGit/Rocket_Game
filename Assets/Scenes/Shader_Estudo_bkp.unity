@@ -201,6 +201,10 @@ MonoBehaviour:
   startCollectedNumber: 0
   havePowerUp: 0
   powerUpSlot: {fileID: 0}
+  audioSource: {fileID: 0}
+  starClip: {fileID: 0}
+  fuelClip: {fileID: 0}
+  powerUpClip: {fileID: 0}
 --- !u!114 &49345211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3dcbdeefe781b047a9d905cb2997209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shieldIsUp: 0
+  menuController: {fileID: 0}
 --- !u!1 &162100098
 GameObject:
   m_ObjectHideFlags: 0
@@ -5923,8 +5929,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f8936d9680a1f46a6d0c3bc8d41b88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rocket: {fileID: 1054580497}
-  speed: 350
 --- !u!1 &1281635780
 GameObject:
   m_ObjectHideFlags: 0
@@ -11266,6 +11270,7 @@ MonoBehaviour:
   increasePointSpeed: 1
   points: 0
   pointsPerSecond: 10
+  newScoreAlert: {fileID: 0}
 --- !u!1001 &1860751943
 PrefabInstance:
   m_ObjectHideFlags: 0

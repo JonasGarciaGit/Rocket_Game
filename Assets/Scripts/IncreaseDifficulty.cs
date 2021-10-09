@@ -9,62 +9,163 @@ public class IncreaseDifficulty : MonoBehaviour
     public GameObject starDropping;
     public GameObject starBackground;
     public GameObject fuelDroppingSpeed;
-    public SpriteRenderer backgroundRenderer;
+    public GameObject backgroundRenderer;
     public List<Sprite> bkImages;
+    private bool alreadyChanged;
+
+    private Vector3 target;
+    private Vector3 startPosition;
+    private float timer;
+    private float timeToReachTarget;
+
 
     private void Start()
     {
         distance = 0;
         StartCoroutine("increaseDistance");
-        StartCoroutine("backgroundTransition");
+        alreadyChanged = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-      
 
         if (distance == 1)
         {
-            backgroundRenderer.gameObject.SetActive(true);
-            backgroundRenderer.gameObject.transform.position = new Vector3(-3.3f, 80f, 45f);
-            backgroundRenderer.sprite = bkImages[0];
+            if (alreadyChanged == false)
+            {
+                backgroundRenderer.gameObject.SetActive(true);
+                backgroundRenderer.gameObject.transform.position = new Vector3(-3.3f, 80f, 45f);
+                backgroundRenderer.GetComponent<SpriteRenderer>().sprite = bkImages[0];
+                startPosition = backgroundRenderer.transform.position;
+                target = new Vector3(backgroundRenderer.transform.position.x, -50f, backgroundRenderer.transform.position.z);
+                timeToReachTarget = 20f;
+                alreadyChanged = true;
+            }
+
+            timer += Time.deltaTime / timeToReachTarget;
+            backgroundRenderer.transform.position = Vector3.Lerp(startPosition, target, timer);
+
+            if (backgroundRenderer.transform.position == target)
+            {
+                cleanValues();
+            }
+
+        }
+        else if (distance == 2)
+        {
+            if (alreadyChanged == false)
+            {
+                backgroundRenderer.GetComponent<SpriteRenderer>().flipX = true;
+                backgroundRenderer.gameObject.transform.position = new Vector3(-3.3f, 80f, 45f);
+                backgroundRenderer.GetComponent<SpriteRenderer>().sprite = bkImages[1];
+                startPosition = backgroundRenderer.transform.position;
+                target = new Vector3(backgroundRenderer.transform.position.x, -50f, backgroundRenderer.transform.position.z);
+                timeToReachTarget = 20f;
+                alreadyChanged = true;
+            }
+
+            timer += Time.deltaTime / timeToReachTarget;
+            backgroundRenderer.transform.position = Vector3.Lerp(startPosition, target, timer);
+
+
+            if (backgroundRenderer.transform.position == target)
+            {
+                cleanValues();
+            }
+
         }
         else if (distance == 3)
         {
-            backgroundRenderer.flipX = true;
-            backgroundRenderer.gameObject.transform.position = new Vector3(-3.3f, 80f, 45f);
-            backgroundRenderer.sprite = bkImages[1];
+            if (alreadyChanged == false)
+            {
+                backgroundRenderer.GetComponent<SpriteRenderer>().flipX = false;
+                backgroundRenderer.gameObject.transform.position = new Vector3(16f, 80f, 45f);
+                backgroundRenderer.GetComponent<SpriteRenderer>().sprite = bkImages[2];
+                startPosition = backgroundRenderer.transform.position;
+                target = new Vector3(backgroundRenderer.transform.position.x, -50f, backgroundRenderer.transform.position.z);
+                timeToReachTarget = 20f;
+                alreadyChanged = true;
+            }
+
+            timer += Time.deltaTime / timeToReachTarget;
+            backgroundRenderer.transform.position = Vector3.Lerp(startPosition, target, timer);
+
+
+            if (backgroundRenderer.transform.position == target)
+            {
+                cleanValues();
+            }
+
         }
         else if (distance == 4)
         {
-            backgroundRenderer.flipX = false;
-            backgroundRenderer.gameObject.transform.position = new Vector3(16f, 80f, 45f);
-            backgroundRenderer.sprite = bkImages[2];
+            if (alreadyChanged == false)
+            {
+                backgroundRenderer.gameObject.transform.position = new Vector3(-9.8f, 80f, 45f);
+                backgroundRenderer.GetComponent<SpriteRenderer>().sprite = bkImages[3];
+                startPosition = backgroundRenderer.transform.position;
+                target = new Vector3(backgroundRenderer.transform.position.x, -50f, backgroundRenderer.transform.position.z);
+                timeToReachTarget = 20f;
+                alreadyChanged = true;
+            }
+
+            timer += Time.deltaTime / timeToReachTarget;
+            backgroundRenderer.transform.position = Vector3.Lerp(startPosition, target, timer);
+
+
+            if (backgroundRenderer.transform.position == target)
+            {
+                cleanValues();
+            }
+
+        }
+        else if (distance == 5)
+        {
+            if (alreadyChanged == false)
+            {
+                backgroundRenderer.gameObject.transform.position = new Vector3(-9.8f, 80f, 45f);
+                backgroundRenderer.GetComponent<SpriteRenderer>().sprite = bkImages[4];
+                startPosition = backgroundRenderer.transform.position;
+                target = new Vector3(backgroundRenderer.transform.position.x, -50f, backgroundRenderer.transform.position.z);
+                timeToReachTarget = 20f;
+                alreadyChanged = true;
+            }
+
+            timer += Time.deltaTime / timeToReachTarget;
+            backgroundRenderer.transform.position = Vector3.Lerp(startPosition, target, timer);
+
+
+            if (backgroundRenderer.transform.position == target)
+            {
+                cleanValues();
+            }
         }
         else if (distance == 6)
         {
-            backgroundRenderer.gameObject.transform.position = new Vector3(-9.8f, 80f, 45f);
-            backgroundRenderer.sprite = bkImages[3];
+            if(alreadyChanged == false)
+            {
+                backgroundRenderer.gameObject.transform.position = new Vector3(-3.3f, 80f, 45f);
+                backgroundRenderer.GetComponent<SpriteRenderer>().sprite = bkImages[5];
+                startPosition = backgroundRenderer.transform.position;
+                target = new Vector3(backgroundRenderer.transform.position.x, -50f, backgroundRenderer.transform.position.z);
+                timeToReachTarget = 20f;
+                alreadyChanged = true;
+            }
+
+            timer += Time.deltaTime / timeToReachTarget;
+            backgroundRenderer.transform.position = Vector3.Lerp(startPosition, target, timer);
         }
-        else if (distance == 8)
-        {
-            backgroundRenderer.gameObject.transform.position = new Vector3(-9.8f, 80f, 45f);
-            backgroundRenderer.sprite = bkImages[4];
-        }
-        else if (distance == 9)
-        {
-            backgroundRenderer.gameObject.transform.position = new Vector3(-3.3f, 80f, 45f);
-            backgroundRenderer.sprite = bkImages[5];
-        }
+
+
     }
 
     IEnumerator increaseDistance()
     {
-        while(distance != 9)
+        while (distance != 7)
         {
-            yield return new WaitForSeconds(120f);
-            this.distance = this.distance + 1;
+            yield return new WaitForSeconds(20f);
+            distance = distance + 1;
 
             asteroidRespawn.GetComponent<AsteroidSpawner>().respawnTime = asteroidRespawn.GetComponent<AsteroidSpawner>().respawnTime - 0.02f;
             starDropping.GetComponent<ParticleSystem>().playbackSpeed = starDropping.GetComponent<ParticleSystem>().playbackSpeed + 0.2f;
@@ -74,65 +175,15 @@ public class IncreaseDifficulty : MonoBehaviour
         }
     }
 
-
-    IEnumerator backgroundTransition()
+    private void cleanValues()
     {
-        while(distance != 9)
-        {
-            yield return new WaitForSeconds(120f);
-            if (distance == 1)
-            {
-                StartCoroutine("fadeOutSprite");
-                StartCoroutine("fadeInSprite"); 
-            }
-            else if (distance == 3)
-            {
-                StartCoroutine("fadeOutSprite");
-                StartCoroutine("fadeInSprite");          
-            }
-            else if (distance == 4)
-            {
-                StartCoroutine("fadeOutSprite");
-                StartCoroutine("fadeInSprite");
-            }
-            else if (distance == 6)
-            {
-                StartCoroutine("fadeOutSprite");
-                StartCoroutine("fadeInSprite");              
-            }
-            else if (distance == 8)
-            {
-                StartCoroutine("fadeOutSprite");
-                StartCoroutine("fadeInSprite");            
-            }
-            else if (distance == 9)
-            {
-                StartCoroutine("fadeOutSprite");
-                StartCoroutine("fadeInSprite");            
-            }
-        }
-    }
-
-    IEnumerator fadeInSprite()
-    {
-        for (float f = 0.1f; f <= 1; f +=0.1f)
-        {
-            Color c = backgroundRenderer.color;
-            c.a = f;
-            backgroundRenderer.color = c;
-            yield return new WaitForSeconds(0.1f);
-        }
-    }
-
-    IEnumerator fadeOutSprite()
-    {
-        for (float f = 1f; f >= 0f; f -= 0.20f)
-        {
-            Color c = backgroundRenderer.color;
-            c.a = f;
-            backgroundRenderer.color = c;
-            yield return new WaitForSeconds(20f);
-        }
+        startPosition = new Vector3();
+        target = new Vector3();
+        timeToReachTarget = 0f;
+        timer = 0f;
+        backgroundRenderer.GetComponent<SpriteRenderer>().sprite = null;
+        backgroundRenderer.gameObject.transform.position = new Vector3();
+        alreadyChanged = false;
     }
 
 
