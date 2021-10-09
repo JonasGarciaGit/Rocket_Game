@@ -7,7 +7,7 @@ public class AsteroidCollision : MonoBehaviour
 
     private bool canCollide = true;
     
-    private int collisionCount = 0;
+    private int collisionCount = 5;
 
     public bool shieldIsUp = false;
 
@@ -19,11 +19,20 @@ public class AsteroidCollision : MonoBehaviour
         {
             if (canCollide && shieldIsUp == false)
             {
-                collisionCount += 1;
+                collisionCount -= 1;
                 canCollide = false;
-                menuController.showFloatingText(collisionCount + " collision");
 
-                if(collisionCount > 3){
+                if(collisionCount == 0)
+                {
+                    menuController.showFloatingText("rocket propulsion stopped");
+                }
+                else
+                {
+                    menuController.showFloatingText(collisionCount + " collisions left");
+                }
+                
+
+                if(collisionCount <= 0){
                     gameObject.GetComponent<RocketDestroy>().onDie();
                 }
                 

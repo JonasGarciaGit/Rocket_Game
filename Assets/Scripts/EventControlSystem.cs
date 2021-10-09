@@ -50,7 +50,20 @@ public class EventControlSystem : MonoBehaviour
                 hasStarted = true;
                 timer = 0f;
                 floatingTextEvent.SetActive(false);
-
+            }else if (randomEvent == 2)
+            {
+                this.gameObject.GetComponent<NebulaEvent>().startNebulaEffect();
+                hasStarted = true;
+                timer = 0f;
+                floatingTextEvent.SetActive(false);
+                this.gameObject.GetComponent<NebulaEvent>().finishNebulaEffect();
+            }else if(randomEvent == 3)
+            {
+                this.gameObject.GetComponent<SauronEyeEvent>().startSauronEyeEvent();
+                hasStarted = true;
+                timer = 0f;
+                floatingTextEvent.SetActive(false);
+                this.gameObject.GetComponent<SauronEyeEvent>().finishSauronEyeEvent();
             }
 
         }

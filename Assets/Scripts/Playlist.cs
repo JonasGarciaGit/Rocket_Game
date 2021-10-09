@@ -11,7 +11,9 @@ public class Playlist : MonoBehaviour
     void Start()
     {
         string canPlay = PlayerPrefs.GetString("playMusic");
-        
+
+        Debug.Log("Can play in game .:" + canPlay);
+
         if("Y".Equals(canPlay)){
             StartCoroutine("startPlaylist");
         }

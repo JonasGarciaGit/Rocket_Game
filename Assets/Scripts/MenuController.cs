@@ -23,6 +23,8 @@ public class MenuController : MonoBehaviour
 
     public GameObject howPlayInterface;
 
+    public GameObject upgradedInterface;
+
     public Text starsAmount;
 
     public GameObject [] rocketsPrefabs;
@@ -41,7 +43,10 @@ public class MenuController : MonoBehaviour
 
     public GameObject buyButton;
     public GameObject equipButton;
+    public GameObject upgradedButton;
+
     private GameObject rocketModel; 
+
 
     public Button powerUpBt;
     public GameObject starsParticle;
@@ -51,17 +56,19 @@ public class MenuController : MonoBehaviour
     public AudioSource audioSource;
 
     public GameObject titleMenu;
+    
+    [SerializeField]
+    private LevelLoader levelLoader;
 
     // Start is called before the first frame update
     void Start()
     {
-            
-            if("Menu_Rocket".Equals(SceneManager.GetActiveScene().name)){
-                this.controlMusic();
-            }
-            
-
+        if ("Menu_Rocket".Equals(SceneManager.GetActiveScene().name))
+        {
+            PlayerPrefs.SetString("playMusic", "Y");
+        }
         
+
     }
 
     // Update is called once per frame
@@ -117,7 +124,7 @@ public class MenuController : MonoBehaviour
     }
 
     public void onClickStart(){
-        SceneManager.LoadSceneAsync("Scene_Merging");
+        levelLoader.LoadLevel("Scene_Merging");
     }
 
     public void onClickShop(){
@@ -125,6 +132,8 @@ public class MenuController : MonoBehaviour
         startButton.SetActive(false);
         howPlayButton.SetActive(false);
         shopButton.SetActive(false);
+        titleMenu.SetActive(false);
+        upgradedButton.SetActive(false);
         controlRocketList = 0;
         loadRocketModel();
         loadStarsAmount();
@@ -137,7 +146,9 @@ public class MenuController : MonoBehaviour
         shopButton.SetActive(true);
         titleMenu.SetActive(true);
         musicComponents.SetActive(true);
-        try{
+        upgradedButton.SetActive(true);
+        try
+        {
             Destroy(rocketModel);
         }catch{
 
@@ -152,6 +163,19 @@ public class MenuController : MonoBehaviour
         shopButton.SetActive(false);
         titleMenu.SetActive(false);
         musicComponents.SetActive(false);
+        upgradedButton.SetActive(false);
+    }
+
+    public void onClickUpgradedInterface()
+    {
+        upgradedInterface.SetActive(true);
+        startButton.SetActive(false);
+        howPlayButton.SetActive(false);
+        shopButton.SetActive(false);
+        titleMenu.SetActive(false);
+        upgradedButton.SetActive(false);
+        musicComponents.SetActive(false);
+
     }
 
     public void onClickPowerUp(GameObject powerUpSlot){
@@ -208,39 +232,52 @@ public class MenuController : MonoBehaviour
     }
 
     public void controlMusic(){
-        
 
-        if(!PlayerPrefs.GetString("playMusic").Equals("Y") && !PlayerPrefs.GetString("playMusic").Equals("N") ){
-            PlayerPrefs.SetString("playMusic","Y");
+        if ("Y".Equals(PlayerPrefs.GetString("playMusic"))){
+            PlayerPrefs.SetString("playMusic", "N");
+        }
+        else
+        {
+            PlayerPrefs.SetString("playMusic", "Y");
         }
 
-        if(!"Y".Equals(PlayerPrefs.GetString("playMusic"))){
+        if("Y".Equals(PlayerPrefs.GetString("playMusic"))){
             musicToggleControl.GetComponentInChildren<Image>().sprite = musicTurnOn;
             audioSource.mute = false;
-            PlayerPrefs.SetString("playMusic","Y");
-        }else{
+        }else if("N".Equals(PlayerPrefs.GetString("playMusic")))
+        {
             musicToggleControl.GetComponentInChildren<Image>().sprite = musicTurnOff;
             audioSource.mute = true;
-            PlayerPrefs.SetString("playMusic","N");
         }
+
+        Debug.Log("Som status .:" + PlayerPrefs.GetString("playMusic"));
     }
 
     IEnumerator waitForSecondsPowerUpShield(GameObject powerUp){
+        float duration = powerUpDuration + PlayerPrefs.GetInt("UpgradeShieldLevel");
+        Debug.Log("Shield duration .:" + duration);
+
         rocket.GetComponent<AsteroidCollision>().shieldIsUp = true;
-        yield return new WaitForSeconds(powerUpDuration);
+        yield return new WaitForSeconds(duration);
         rocket.GetComponent<AsteroidCollision>().shieldIsUp = false;
         Destroy(powerUp);
     }
 
     IEnumerator waitForSecondsX2Star(float time){
+        float duration = time + PlayerPrefs.GetInt("UpgradeX2Level");
+        Debug.Log("x2 duration .:" + duration);
+
         rocket.GetComponent<Collectable>().startCollectedNumber = 2;
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(duration);
         rocket.GetComponent<Collectable>().startCollectedNumber = 1;
     }
 
     IEnumerator waitForSecondsMagnetism(){
+        float duration = 10f + PlayerPrefs.GetInt("UpgradeMagLevel");
+        Debug.Log("Mag duration .:" + duration);
+
         starsParticle.GetComponent<ParticleAttract>().speed =  5f;
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(duration);
         starsParticle.GetComponent<ParticleAttract>().speed =  0f;
     }
 

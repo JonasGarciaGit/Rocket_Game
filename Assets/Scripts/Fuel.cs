@@ -7,6 +7,7 @@ public class Fuel : MonoBehaviour
 {
     [SerializeField]
     private int maxFuel = 100;
+    [SerializeField]
     private int currentFuel;
 
     public int decaySpeed;
@@ -24,10 +25,18 @@ public class Fuel : MonoBehaviour
     }
 
     public void ModifyFuel(int amount){
-        currentFuel += amount;
 
-        float currentFuelPct = (float) currentFuel / (float) maxFuel;
+            currentFuel += amount;
+
+        if(currentFuel >= maxFuel)
+        {
+            currentFuel = maxFuel;
+        }
+
+        float currentFuelPct = (float)currentFuel / (float)maxFuel;
         OnFuelPctChanged(currentFuelPct);
+
+
     }
 
     // Start is called before the first frame update

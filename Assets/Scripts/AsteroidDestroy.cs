@@ -14,7 +14,7 @@ public class AsteroidDestroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y < screenBounds.y * -2)
+        if (transform.position.y < screenBounds.y * -1.1)
         {
             Destroy(this.gameObject);
         }

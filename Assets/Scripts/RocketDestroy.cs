@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RocketDestroy : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class RocketDestroy : MonoBehaviour
     public PreventRocketGetOutView preventRocketGetOutView;
 
     public GameObject gameOverInterface;
+
+    public Text starsAmountText;
 
     private bool isDie;
 
@@ -72,7 +75,6 @@ public class RocketDestroy : MonoBehaviour
         this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
         this.gameObject.GetComponent<RocketMovement>().enabled = false;
         this.gameObject.GetComponent<Rigidbody>().useGravity = true;
-        preventRocketGetOutView.enabled = false;
         rocketMove.enabled = false;
         rocketMovement.enabled = false;
         vfxPropulsion.SetActive(false);
@@ -83,7 +85,9 @@ public class RocketDestroy : MonoBehaviour
         isDie = true;
         increaseScore.enabled = false;
         yield return new WaitForSeconds(5f);
+        preventRocketGetOutView.enabled = true;
         gameOverInterface.SetActive(true);
+        starsAmountText.text = collectable.getStarsAmount().ToString();
     }
 
 
