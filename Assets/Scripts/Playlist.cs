@@ -6,18 +6,13 @@ public class Playlist : MonoBehaviour
 {
     public AudioClip[] clips;
     private AudioSource audioSource;
+    private string canPlay;
 
     // Start is called before the first frame update
     void Start()
     {
-        string canPlay = PlayerPrefs.GetString("playMusic");
-
+        canPlay = PlayerPrefs.GetString("playMusic");
         Debug.Log("Can play in game .:" + canPlay);
-
-        if("Y".Equals(canPlay)){
-            StartCoroutine("startPlaylist");
-        }
-        
     }
 
     private AudioClip GetRandomClip()
@@ -44,6 +39,14 @@ public class Playlist : MonoBehaviour
             }
         }
         
+    }
+
+    public void callStartPlayList()
+    {
+        if ("Y".Equals(canPlay))
+        {
+            StartCoroutine("startPlaylist");
+        }
     }
 
     IEnumerator startPlaylist()

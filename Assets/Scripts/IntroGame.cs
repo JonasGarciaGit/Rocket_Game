@@ -36,6 +36,11 @@ public class IntroGame : MonoBehaviour
 
     public Text bestScore;
 
+    [SerializeField]
+    public bool controlSelected;
+    [SerializeField]
+    public string controllerChoosed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,10 +65,11 @@ public class IntroGame : MonoBehaviour
                 GameObject.Find("Rocket_Sculpt").GetComponent<RocketDestroy>().vfxPropulsion = vfxPropulsion;
             }
         }
-        
 
+       
         stopWatchTime = 10;
         stopWatch.text = "10";
+        stopWatch.gameObject.SetActive(false);
         rocket.GetComponent<RocketMovementAcelerometer>().enabled = false;
         rocket.GetComponent<RocketMovement>().enabled = false;
         start = false;
@@ -82,7 +88,6 @@ public class IntroGame : MonoBehaviour
         rocket.GetComponent<Fuel>().controlTimer = 1000f;
         background.transform.position = new Vector3(background.transform.position.x,84f,50f);
         bestScore.text = PlayerPrefs.GetInt("Score").ToString();
-        StartCoroutine("startGame");
     }
 
     // Update is called once per frame
@@ -120,27 +125,48 @@ public class IntroGame : MonoBehaviour
         }
     }
 
+    public void callStartGame()
+    {
+          StartCoroutine("startGame");
+    }
+
     IEnumerator startGame()
     {
-        while (stopWatchTime != 0)
+        if (controlSelected)
         {
-            yield return new WaitForSeconds(1f);
-            stopWatchTime = stopWatchTime - 1;
-            stopWatch.text = stopWatchTime.ToString();
-            audioSource.volume = 0.1f;
-            audioSource.PlayOneShot(stopwatchClip);
-        }
 
-        if(stopWatchTime == 0)
-        {
-            start = true;
-            audioSource.PlayOneShot(rocketLaunchClip);
-            // rocket.GetComponent<RocketMovementAcelerometer>().enabled = true;
-            rocket.GetComponent<RocketMovement>().enabled = true;
-            vfxPropulsion.SetActive(true);
-            stopWatch.enabled = false;
-            Destroy(platform, 15f);
+          
+
+            while (stopWatchTime != 0)
+            {
+                yield return new WaitForSeconds(1f);
+
+                stopWatch.gameObject.SetActive(true);
+                stopWatchTime = stopWatchTime - 1;
+                stopWatch.text = stopWatchTime.ToString();
+                audioSource.volume = 0.1f;
+                audioSource.PlayOneShot(stopwatchClip);
+            }
+
+            if (stopWatchTime == 0)
+            {
+                start = true;
+                audioSource.PlayOneShot(rocketLaunchClip);
+
+                if (controllerChoosed.Equals("FINGER_TOUCH"))
+                {
+                    rocket.GetComponent<RocketMovement>().enabled = true;
+                }
+                else
+                {
+                    rocket.GetComponent<RocketMovementAcelerometer>().enabled = true;
+                }
+                vfxPropulsion.SetActive(true);
+                stopWatch.enabled = false;
+                Destroy(platform, 15f);
+            }
         }
+        
     }
 
 }
