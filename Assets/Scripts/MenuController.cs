@@ -324,6 +324,7 @@ public class MenuController : MonoBehaviour
 
     void loadStarsAmount(){
         int stars = PlayerPrefs.GetInt("Stars");
+        Debug.Log("Estrelas carregadas.: " + stars);
         starsAmount.text = stars.ToString();
     }
 

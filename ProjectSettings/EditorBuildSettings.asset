@@ -5,21 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Menu_Rocket.unity
     guid: c0990037839659740b5a37e065efa70c
-  - enabled: 0
-    path: Assets/Scenes/Fuel_System.unity
-    guid: b42387670cb605a4eb09b6bcc110e454
-  - enabled: 0
-    path: Assets/Scenes/Scene_Merging2.unity
-    guid: ecdc77acc9b0a96498350eceea3c1191
-  - enabled: 0
-    path: Assets/Scenes/Scene_Merging1.unity
-    guid: ef88b4a3617fd4a4a9da305df84c77eb
   - enabled: 1
     path: Assets/Scenes/Scene_Merging.unity
     guid: 5871b8a8e241e7146a2ef0c303f0a5f9

@@ -44,7 +44,7 @@ public class SolarStorm : MonoBehaviour
 
     public void closeSolarStormEvent(){
         rocket.GetComponent<Thermometer>().currentTemperature = 0;
-        rocket.GetComponent<Thermometer>().ModifyTemperature(-100);
+        rocket.GetComponent<Thermometer>().ModifyTemperature(0);
         thermometer.SetActive(false);
         thermometerFill.SetActive(false);
         rocket.GetComponent<Thermometer>().eventIsActive = false;
