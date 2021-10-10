@@ -25,7 +25,6 @@ public class IncreaseScore : MonoBehaviour
         points = 0;
         scorePoints.text = points.ToString();
         gameOver = false;
-        StartCoroutine("gameStarted");
         bestScore = PlayerPrefs.GetInt("Score");
     }
 
@@ -38,9 +37,9 @@ public class IncreaseScore : MonoBehaviour
         scorePoints.text = points.ToString();
     }
 
-    IEnumerator gameStarted()
+    public void gameStarted()
     {
-        yield return new WaitForSeconds(10f);
+        
         StartCoroutine("increasingPoints");
     }
 

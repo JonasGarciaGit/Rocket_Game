@@ -41956,6 +41956,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 841455f580909ae4bb40a2cca3070e06, type: 3}
   - {fileID: 21300000, guid: a608563ee62ff2a4789b4ce4210cf803, type: 3}
   - {fileID: 21300000, guid: c9bba555c8c2174489daeb74425a1205, type: 3}
+  timeDistancePlanets: 120
 --- !u!4 &1642865826
 Transform:
   m_ObjectHideFlags: 0

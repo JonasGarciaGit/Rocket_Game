@@ -163,6 +163,7 @@ public class IntroGame : MonoBehaviour
                 }
                 vfxPropulsion.SetActive(true);
                 stopWatch.enabled = false;
+                GameObject.Find("User_UI").transform.Find("ScoreTxt").GetComponent<IncreaseScore>().gameStarted();
                 Destroy(platform, 15f);
             }
         }
