@@ -121,7 +121,7 @@ public class IntroGame : MonoBehaviour
             yield return new WaitForSeconds(introSpeed);
             background.transform.position = new Vector3(background.transform.position.x, background.transform.position.y -1, 50f);
             platform.transform.position = new Vector2(platform.transform.position.x, platform.transform.position.y - 1);
-            clouds.transform.position = new Vector2(clouds.transform.position.x, clouds.transform.position.y - 1f);
+            clouds.transform.position = Vector3.Lerp(clouds.transform.position, new Vector3(clouds.transform.position.x, -50, clouds.transform.position.z), Time.deltaTime * 2);
         }
     }
 
