@@ -24,6 +24,8 @@ public class IntroGame : MonoBehaviour
     public AudioSource audioSource;
     [SerializeField]
     public AudioClip stopwatchClip;
+    [SerializeField]
+    public AudioClip rocketLaunchClip;
 
     public GameObject fuelBar;
     public GameObject fuelFill;
@@ -132,6 +134,7 @@ public class IntroGame : MonoBehaviour
         if(stopWatchTime == 0)
         {
             start = true;
+            audioSource.PlayOneShot(rocketLaunchClip);
             // rocket.GetComponent<RocketMovementAcelerometer>().enabled = true;
             rocket.GetComponent<RocketMovement>().enabled = true;
             vfxPropulsion.SetActive(true);
