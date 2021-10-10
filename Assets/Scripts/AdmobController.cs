@@ -43,6 +43,7 @@ public class AdmobController : MonoBehaviour
 
     int starsAmount;
 
+    private bool alreadyWatchAds = false;
     
     void Start()
     {
@@ -167,12 +168,16 @@ public class AdmobController : MonoBehaviour
 
     public void HandleOnAdRewarded(object sender, EventArgs args)
     {
-        starsAmount = collectable.getStarsAmount();
+        if (alreadyWatchAds == false)
+        {
+            starsAmount = collectable.getStarsAmount();
+            int stars = PlayerPrefs.GetInt("Stars");
+            stars = stars + starsAmount;
+            PlayerPrefs.SetInt("Stars", stars);
+            starsEanred.text = (starsAmount + starsAmount).ToString();
+            alreadyWatchAds = true;
+        }
 
-        int stars = PlayerPrefs.GetInt("Stars");
-        stars = stars + starsAmount;
-        PlayerPrefs.SetInt("Stars", stars);
-        starsEanred.text = (starsAmount + starsAmount).ToString();
 
     }
 

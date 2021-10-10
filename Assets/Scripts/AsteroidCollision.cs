@@ -13,6 +13,8 @@ public class AsteroidCollision : MonoBehaviour
 
     public MenuController menuController;
 
+    private bool playerIsDead = false; 
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag.Equals("Asteroid"))
@@ -30,10 +32,12 @@ public class AsteroidCollision : MonoBehaviour
                 {
                     menuController.showFloatingText(collisionCount + " collisions left");
                 }
-                
 
-                if(collisionCount <= 0){
+                Debug.Log("Ainda estou colidindo");
+
+                if(collisionCount <= 0 && playerIsDead == false){
                     gameObject.GetComponent<RocketDestroy>().onDie();
+                    playerIsDead = true;
                 }
                 
                 StartCoroutine("CanCollideAgain");         

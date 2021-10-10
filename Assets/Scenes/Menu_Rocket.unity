@@ -2736,7 +2736,7 @@ MonoBehaviour:
   upgradedInterface: {fileID: 1179926781}
   starsAmount: {fileID: 648947358}
   rocketsPrefabs:
-  - {fileID: 919132149155446097, guid: 25c2be61654197b4e8db2f630b24641b, type: 3}
+  - {fileID: 5831249670266312863, guid: 8b72c4141f5f3724c824b8e30f3814e3, type: 3}
   - {fileID: 8194055855544138823, guid: 89d2dc08239a92941b414c5e7c746c38, type: 3}
   - {fileID: 318860324110831047, guid: a8b07e3a800612e428d4054379fc9b73, type: 3}
   - {fileID: 5970812778908800693, guid: 1168bcb9dcf5ef645ae15dae44223ef1, type: 3}
@@ -3388,7 +3388,7 @@ MonoBehaviour:
 
     To move the rocket place your
     finger on the cell phone screen and slide in the direction you want, the rocket
-    follows your finger.
+    follows your finger or you can choose to move while swinging the phone.
 
 
 
@@ -3403,8 +3403,8 @@ MonoBehaviour:
     Stars
 
 
-    The stars you collect are used
-    to unlock new rockets in the store.
+    The
+    stars you collect are used to unlock new rockets in the store.
 
 
 
@@ -3416,41 +3416,41 @@ MonoBehaviour:
     Fuel
 
 
-    In the lower right
-    corner you may notice a bar that will run out with time, that''s the fuel, if
-    it zeros you lose.
+    In
+    the lower right corner you may notice a bar that will run out with time, that''s
+    the fuel, if it zeros you lose.
 
 
     Life
 
 
-    Although it is not presented on the screen
-    the player has a life, after colliding five times you lose the game.
+    Although it is not presented
+    on the screen the player has a life, after colliding five times you lose the
+    game.
 
 
-    Power
-    Ups
+    Power Ups
 
 
-    During times and times some power ups will be played, such as the shield
-    that makes you immune to blows.
+    During times and times some power ups will be played,
+    such as the shield that makes you immune to blows.
 
 
 
     Events
 
 
-    Some events may occur during
-    the course of the game example a solar storm where the fuel has drastically reduced
-    and you will not be able to use power ups.
+    Some events
+    may occur during the course of the game example a solar storm where the fuel
+    has drastically reduced and you will not be able to use power ups.
 
 
     Upgrades
 
 
-    You can find
-    an upgrades button in the start menu, by accessing this interface it is possible
-    to improve your power ups
+    You
+    can find an upgrades button in the start menu, by accessing this interface it
+    is possible to improve your power ups
 
 
 
@@ -5551,6 +5551,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857470119}
   m_CullTransparentMesh: 1
+--- !u!1 &977188809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 977188810}
+  - component: {fileID: 977188812}
+  - component: {fileID: 977188811}
+  m_Layer: 5
+  m_Name: Phone (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &977188810
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977188809}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2076135871}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 65, y: 483}
+  m_SizeDelta: {x: 343.37, y: 330.85}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &977188811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977188809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 68f419b4f425b5042b8f5cfacbc90aa9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &977188812
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977188809}
+  m_CullTransparentMesh: 1
 --- !u!1 &985701792
 GameObject:
   m_ObjectHideFlags: 0
@@ -6165,7 +6240,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -38.33, y: 510}
+  m_AnchoredPosition: {x: -157, y: 483}
   m_SizeDelta: {x: 343.37, y: 330.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1130932373
@@ -15014,6 +15089,7 @@ RectTransform:
   - {fileID: 1130932372}
   - {fileID: 356028786}
   - {fileID: 452667565}
+  - {fileID: 977188810}
   m_Father: {fileID: 424365008}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
