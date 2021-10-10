@@ -11,14 +11,19 @@ public class IntroGame : MonoBehaviour
     public GameObject asteroidSpawner;
     public GameObject fuelSpawner;
     public GameObject platform;
+    public GameObject clouds;
     public GameObject rocket;
-    public GameObject vfxPropulsion;
+    private GameObject vfxPropulsion;
     public GameObject powerUpSpawner;
     public Text stopWatch;
     private int stopWatchTime;
     public float introSpeed;
     private bool start;
     private float controlTimerTemp;
+    [SerializeField]
+    public AudioSource audioSource;
+    [SerializeField]
+    public AudioClip stopwatchClip;
 
     public GameObject fuelBar;
     public GameObject fuelFill;
@@ -30,6 +35,16 @@ public class IntroGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        for (int i= 0; i < rocket.transform.childCount; i++)
+        {
+            if (rocket.transform.GetChild(i).gameObject.active)
+            {
+                vfxPropulsion = rocket.transform.GetChild(i).Find("vfx_propulsion").gameObject;
+            }
+        }
+        
+
         stopWatchTime = 10;
         stopWatch.text = "10";
         rocket.GetComponent<RocketMovementAcelerometer>().enabled = false;
@@ -82,6 +97,7 @@ public class IntroGame : MonoBehaviour
             yield return new WaitForSeconds(introSpeed);
             background.transform.position = new Vector3(background.transform.position.x, background.transform.position.y -1, 50f);
             platform.transform.position = new Vector2(platform.transform.position.x, platform.transform.position.y - 1);
+            clouds.transform.position = new Vector2(clouds.transform.position.x, clouds.transform.position.y - 1f);
         }
     }
 
@@ -92,6 +108,8 @@ public class IntroGame : MonoBehaviour
             yield return new WaitForSeconds(1f);
             stopWatchTime = stopWatchTime - 1;
             stopWatch.text = stopWatchTime.ToString();
+            audioSource.volume = 0.1f;
+            audioSource.PlayOneShot(stopwatchClip);
         }
 
         if(stopWatchTime == 0)
@@ -101,6 +119,7 @@ public class IntroGame : MonoBehaviour
             rocket.GetComponent<RocketMovement>().enabled = true;
             vfxPropulsion.SetActive(true);
             stopWatch.enabled = false;
+            Destroy(platform, 15f);
         }
     }
 

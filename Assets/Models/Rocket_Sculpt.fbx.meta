@@ -3,37 +3,7 @@ guid: 25c2be61654197b4e8db2f630b24641b
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: BottomColor
-    second: {fileID: 2100000, guid: 556e116658c6784499a0291b067bfae9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Contornos
-    second: {fileID: 2100000, guid: 3a4ffdc0c8577b44da4a3854659d90ea, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Corpo
-    second: {fileID: 2100000, guid: fc9bb1197362cfa43a8a8ed25fc07bfc, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Exaustor
-    second: {fileID: 2100000, guid: 041f6dfdb8df2d44699a097564fb1ae4, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Glass
-    second: {fileID: 2100000, guid: 959b361ac348a5f428e4c0c68a4e20d2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: TopColor
-    second: {fileID: 2100000, guid: f36a6966a3d431647af54113c2ed287f, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

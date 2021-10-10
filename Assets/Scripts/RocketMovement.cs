@@ -18,7 +18,7 @@ public class RocketMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && Input.GetTouch(0).position.y > Screen.height * 0.1)
         {
             Touch touch = Input.GetTouch(0);
             touchPosition = Camera.main.ScreenToWorldPoint(touch.position);

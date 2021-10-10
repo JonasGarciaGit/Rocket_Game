@@ -14,7 +14,7 @@ public class RocketDestroy : MonoBehaviour
 
     public RocketMovement rocketMove;
 
-    public GameObject vfxPropulsion;
+    private GameObject vfxPropulsion;
 
     public PreventRocketGetOutView preventRocketGetOutView;
 
@@ -27,6 +27,15 @@ public class RocketDestroy : MonoBehaviour
 
     private void Start()
     {
+        for (int i = 0; i < this.gameObject.transform.childCount; i++)
+        {
+            if (this.gameObject.transform.GetChild(i).gameObject.active)
+            {
+                vfxPropulsion = this.gameObject.transform.GetChild(i).Find("vfx_propulsion").gameObject;
+            }
+        }
+
+
         isDie = false;
         collectable = this.gameObject.GetComponent<Collectable>();
         rocketMovement = this.gameObject.GetComponent<RocketMovementAcelerometer>();

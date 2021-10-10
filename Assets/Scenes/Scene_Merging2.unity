@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxFuel: 100
+  currentFuel: 0
   decaySpeed: -10
   controlTimer: 4
 --- !u!114 &49345213
@@ -299,6 +300,7 @@ MonoBehaviour:
   vfxPropulsion: {fileID: 4368702208284226649}
   preventRocketGetOutView: {fileID: 0}
   gameOverInterface: {fileID: 2104706780}
+  starsAmountText: {fileID: 0}
 --- !u!114 &49345214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -962,6 +964,7 @@ MonoBehaviour:
   floatingText: {fileID: 589252630151549606, guid: 322a69a1e33ec19408e7b9b988192756, type: 3}
   shopInterface: {fileID: 0}
   howPlayInterface: {fileID: 0}
+  upgradedInterface: {fileID: 0}
   starsAmount: {fileID: 0}
   rocketsPrefabs: []
   rocketsPrice: 
@@ -972,11 +975,13 @@ MonoBehaviour:
   howPlayButton: {fileID: 0}
   buyButton: {fileID: 0}
   equipButton: {fileID: 0}
+  upgradedButton: {fileID: 0}
   powerUpBt: {fileID: 658845637}
   starsParticle: {fileID: 1637553449}
   isEventSolarOn: 0
   audioSource: {fileID: 0}
   titleMenu: {fileID: 0}
+  levelLoader: {fileID: 0}
 --- !u!114 &368352251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22461,6 +22466,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rocketTarget: {fileID: 1149304248}
+  sauronEye: {fileID: 0}
+  sauronEyeIsUp: 0
   speed: 0
 --- !u!1 &1642865824
 GameObject:
@@ -23751,6 +23758,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2104706780}
   m_CullTransparentMesh: 1
+--- !u!1001 &1740769329310463345
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4010888128123279076, guid: ce312e99cd587c842810f3c4c0891bc4, type: 3}
+      propertyPath: m_Name
+      value: Rocket1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165367731714843528, guid: ce312e99cd587c842810f3c4c0891bc4, type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165367731714843528, guid: ce312e99cd587c842810f3c4c0891bc4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165367731714843528, guid: ce312e99cd587c842810f3c4c0891bc4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.2210665
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165367731714843528, guid: ce312e99cd587c842810f3c4c0891bc4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.450771
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165367731714843528, guid: ce312e99cd587c842810f3c4c0891bc4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165367731714843528, guid: ce312e99cd587c842810f3c4c0891bc4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165367731714843528, guid: ce312e99cd587c842810f3c4c0891bc4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165367731714843528, guid: ce312e99cd587c842810f3c4c0891bc4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165367731714843528, guid: ce312e99cd587c842810f3c4c0891bc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165367731714843528, guid: ce312e99cd587c842810f3c4c0891bc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165367731714843528, guid: ce312e99cd587c842810f3c4c0891bc4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ce312e99cd587c842810f3c4c0891bc4, type: 3}
 --- !u!1001 &4368702208284226648
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -39,7 +39,7 @@ public class IncreaseDifficulty : MonoBehaviour
                 backgroundRenderer.GetComponent<SpriteRenderer>().sprite = bkImages[0];
                 startPosition = backgroundRenderer.transform.position;
                 target = new Vector3(backgroundRenderer.transform.position.x, -50f, backgroundRenderer.transform.position.z);
-                timeToReachTarget = 20f;
+                timeToReachTarget = 180f;
                 alreadyChanged = true;
             }
 
@@ -61,7 +61,7 @@ public class IncreaseDifficulty : MonoBehaviour
                 backgroundRenderer.GetComponent<SpriteRenderer>().sprite = bkImages[1];
                 startPosition = backgroundRenderer.transform.position;
                 target = new Vector3(backgroundRenderer.transform.position.x, -50f, backgroundRenderer.transform.position.z);
-                timeToReachTarget = 20f;
+                timeToReachTarget = 180f;
                 alreadyChanged = true;
             }
 
@@ -84,7 +84,7 @@ public class IncreaseDifficulty : MonoBehaviour
                 backgroundRenderer.GetComponent<SpriteRenderer>().sprite = bkImages[2];
                 startPosition = backgroundRenderer.transform.position;
                 target = new Vector3(backgroundRenderer.transform.position.x, -50f, backgroundRenderer.transform.position.z);
-                timeToReachTarget = 20f;
+                timeToReachTarget = 180f;
                 alreadyChanged = true;
             }
 
@@ -106,7 +106,7 @@ public class IncreaseDifficulty : MonoBehaviour
                 backgroundRenderer.GetComponent<SpriteRenderer>().sprite = bkImages[3];
                 startPosition = backgroundRenderer.transform.position;
                 target = new Vector3(backgroundRenderer.transform.position.x, -50f, backgroundRenderer.transform.position.z);
-                timeToReachTarget = 20f;
+                timeToReachTarget = 180f;
                 alreadyChanged = true;
             }
 
@@ -128,7 +128,7 @@ public class IncreaseDifficulty : MonoBehaviour
                 backgroundRenderer.GetComponent<SpriteRenderer>().sprite = bkImages[4];
                 startPosition = backgroundRenderer.transform.position;
                 target = new Vector3(backgroundRenderer.transform.position.x, -50f, backgroundRenderer.transform.position.z);
-                timeToReachTarget = 20f;
+                timeToReachTarget = 180f;
                 alreadyChanged = true;
             }
 
@@ -149,7 +149,7 @@ public class IncreaseDifficulty : MonoBehaviour
                 backgroundRenderer.GetComponent<SpriteRenderer>().sprite = bkImages[5];
                 startPosition = backgroundRenderer.transform.position;
                 target = new Vector3(backgroundRenderer.transform.position.x, -50f, backgroundRenderer.transform.position.z);
-                timeToReachTarget = 20f;
+                timeToReachTarget = 180f;
                 alreadyChanged = true;
             }
 
@@ -164,7 +164,7 @@ public class IncreaseDifficulty : MonoBehaviour
     {
         while (distance != 7)
         {
-            yield return new WaitForSeconds(20f);
+            yield return new WaitForSeconds(180f);
             distance = distance + 1;
 
             asteroidRespawn.GetComponent<AsteroidSpawner>().respawnTime = asteroidRespawn.GetComponent<AsteroidSpawner>().respawnTime - 0.02f;
