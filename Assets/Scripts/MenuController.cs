@@ -43,6 +43,7 @@ public class MenuController : MonoBehaviour
 
     public GameObject buyButton;
     public GameObject equipButton;
+    public GameObject equipedButton;
     public GameObject upgradedButton;
 
     private GameObject rocketModel; 
@@ -67,8 +68,6 @@ public class MenuController : MonoBehaviour
         {
             PlayerPrefs.SetString("playMusic", "Y");
         }
-        
-
     }
 
     // Update is called once per frame
@@ -120,7 +119,45 @@ public class MenuController : MonoBehaviour
     }
 
     public void onClickEquip(){
-        Debug.Log("Euip button pressionado");
+
+        string name = rocketsPrefabs[controlRocketList].name;
+
+        if ("Astronaut Model".Equals(name))
+        {
+            name = "Astronaut";
+        }
+        if("Rocket_Sculpt".Equals(name))
+        {
+            name = "Rocket1";
+        }
+
+        PlayerPrefs.SetString("Rocket_Number_" + rocketsPrefabs[controlRocketList], "Equiped");
+        PlayerPrefs.SetString("Rocket_Equiped_Name", name);
+
+       for (int i = 0; i <= rocketsPrefabs.Length -1; i++)
+        {
+
+            if(i != controlRocketList)
+            {
+               string status = PlayerPrefs.GetString("Rocket_Number_" + rocketsPrefabs[i]);
+                Debug.Log(status);
+
+                if ("Equiped".Equals(status))
+                {
+                    PlayerPrefs.SetString("Rocket_Number_" + rocketsPrefabs[i], "Purchased");
+                }
+            }
+        }
+
+        equipButton.SetActive(false);
+        equipedButton.SetActive(true);
+
+
+    }
+
+    public void onClickEquiped()
+    {
+        Debug.Log("Equiped button pressionado");
     }
 
     public void onClickStart(){
@@ -250,12 +287,12 @@ public class MenuController : MonoBehaviour
             audioSource.mute = true;
         }
 
-        Debug.Log("Som status .:" + PlayerPrefs.GetString("playMusic"));
+
     }
 
     IEnumerator waitForSecondsPowerUpShield(GameObject powerUp){
         float duration = powerUpDuration + PlayerPrefs.GetInt("UpgradeShieldLevel");
-        Debug.Log("Shield duration .:" + duration);
+
 
         rocket.GetComponent<AsteroidCollision>().shieldIsUp = true;
         yield return new WaitForSeconds(duration);
@@ -265,7 +302,6 @@ public class MenuController : MonoBehaviour
 
     IEnumerator waitForSecondsX2Star(float time){
         float duration = time + PlayerPrefs.GetInt("UpgradeX2Level");
-        Debug.Log("x2 duration .:" + duration);
 
         rocket.GetComponent<Collectable>().startCollectedNumber = 2;
         yield return new WaitForSeconds(duration);
@@ -274,7 +310,6 @@ public class MenuController : MonoBehaviour
 
     IEnumerator waitForSecondsMagnetism(){
         float duration = 10f + PlayerPrefs.GetInt("UpgradeMagLevel");
-        Debug.Log("Mag duration .:" + duration);
 
         starsParticle.GetComponent<ParticleAttract>().speed =  5f;
         yield return new WaitForSeconds(duration);
@@ -298,15 +333,32 @@ public class MenuController : MonoBehaviour
         }catch{
 
         }
+
+        /*for(int i = 0; i < rocketsPrefabs.Length; i++)
+        {
+            string status = PlayerPrefs.GetString("Rocket_Number_" + i);
+            if ("".Equals(status))
+            {
+                PlayerPrefs.SetString("Rocket_Number_" + i, "blocked");
+            }
+        }*/
+
         string purchasedConfirmation = PlayerPrefs.GetString("Rocket_Number_" + rocketsPrefabs[controlRocketList]);
 
-        if(purchasedConfirmation.Equals("Purchased")){
+        if (purchasedConfirmation.Equals("Purchased")) {
             buyButton.SetActive(false);
+            equipedButton.SetActive(false);
             equipButton.SetActive(true);
-        }else{
+        } else if (purchasedConfirmation.Equals("Equiped")) {
+            buyButton.SetActive(false);
+            equipedButton.SetActive(true);
+            equipButton.SetActive(false);
+        } else {
             buyButton.SetActive(true);
             equipButton.SetActive(false);
+            equipedButton.SetActive(false);
         }
+
 
         rocketModel = Instantiate(rocketsPrefabs[controlRocketList], rocketSlot.transform.position, Quaternion.identity);
         rocketModel.transform.localScale = new Vector3(3,3,3);
