@@ -63,6 +63,7 @@ public class BlackHoleCollision : MonoBehaviour
         Debug.Log("Cheguei aqui e desabilitei o rocket");
         yield return new WaitForSeconds(2f);
         rocket.SetActive(true);
+        rocket.GetComponent<AsteroidCollision>().canCollide = true;
         Debug.Log("Cheguei aqui e habilitei o rocket");
         starBackground.playbackSpeed = originalPlaySpeed;
         canDestroyBlackHoles = true;

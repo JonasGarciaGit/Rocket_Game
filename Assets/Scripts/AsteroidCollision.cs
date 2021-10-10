@@ -5,7 +5,7 @@ using UnityEngine;
 public class AsteroidCollision : MonoBehaviour
 {
 
-    private bool canCollide = true;
+    public bool canCollide = true;
     
     private int collisionCount = 5;
 
@@ -32,8 +32,6 @@ public class AsteroidCollision : MonoBehaviour
                 {
                     menuController.showFloatingText(collisionCount + " collisions left");
                 }
-
-                Debug.Log("Ainda estou colidindo");
 
                 if(collisionCount <= 0 && playerIsDead == false){
                     gameObject.GetComponent<RocketDestroy>().onDie();

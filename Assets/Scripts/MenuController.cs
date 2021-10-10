@@ -61,6 +61,12 @@ public class MenuController : MonoBehaviour
     [SerializeField]
     private LevelLoader levelLoader;
 
+    [SerializeField] SaveStarsAmount saveStars;
+
+    private bool isShieldUp = false;
+    private bool is2xUp = false;
+    private bool isMagnecticUp = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,8 +89,6 @@ public class MenuController : MonoBehaviour
             controlRocketList = 0;
         }
         loadRocketModel();
-
-        Debug.Log(controlRocketList);
     }
 
     public void onClickArrowLeft(){
@@ -96,7 +100,6 @@ public class MenuController : MonoBehaviour
         
         loadRocketModel();
 
-        Debug.Log(controlRocketList);
     }
 
 
@@ -140,7 +143,6 @@ public class MenuController : MonoBehaviour
             if(i != controlRocketList)
             {
                string status = PlayerPrefs.GetString("Rocket_Number_" + rocketsPrefabs[i]);
-                Debug.Log(status);
 
                 if ("Equiped".Equals(status))
                 {
@@ -222,31 +224,55 @@ public class MenuController : MonoBehaviour
 
             Transform powerUp = powerUpSlot.transform.GetChild(0);
 
+  
 
-            if("shieldPowerUp(Clone)(Clone)".Equals(powerUp.name)){
+                if ("shieldPowerUp(Clone)(Clone)".Equals(powerUp.name)){
+                if(isShieldUp == false){
                 showFloatingText("Shield up!");
                 rocket.GetComponent<Collectable>().havePowerUp = false;
                 GameObject shield = Instantiate(powerUp.gameObject,rocket.transform.position,Quaternion.identity);
                 shield.transform.parent = rocket.transform;
                 shield.transform.localScale = new Vector3(9f, 9f, 9f);
                 shield.GetComponent<SphereCollider>().isTrigger = false;
+                Destroy(powerUp.gameObject);
                 StartCoroutine(waitForSecondsPowerUpShield(shield));
-            }
+                }
+                else
+                {
+                        showFloatingText("Shield Cooldown!");
+                }
+                }
 
             if("powerUpX2(Clone)(Clone)".Equals(powerUp.name)){
-                showFloatingText("x2 Starts!");
-                rocket.GetComponent<Collectable>().havePowerUp = false;
-                StartCoroutine(waitForSecondsX2Star(10f));
+                if(is2xUp == false)
+                    {
+                        showFloatingText("x2 Starts!");
+                        rocket.GetComponent<Collectable>().havePowerUp = false;
+                        Destroy(powerUp.gameObject);
+                        StartCoroutine(waitForSecondsX2Star(10f));
+                    }
+                    else
+                    {
+                        showFloatingText("x2 Cooldown!");
+                    }
+
             }
 
             if("MagnecticItem(Clone)(Clone)".Equals(powerUp.name)){
-                showFloatingText("Magnetism up!");
-                rocket.GetComponent<Collectable>().havePowerUp = false;
-                StartCoroutine(waitForSecondsMagnetism());
+                if(isMagnecticUp == false)
+                    {
+                        showFloatingText("Magnetism up!");
+                        rocket.GetComponent<Collectable>().havePowerUp = false;
+                        Destroy(powerUp.gameObject);
+                        StartCoroutine(waitForSecondsMagnetism());
+                    }
+                    else
+                    {
+                        showFloatingText("Magnetism Cooldown!");
+                    }
+
             }
-
-
-            Destroy(powerUp.gameObject);
+            
 
             } else {
                 showFloatingText("Can't use yet");
@@ -261,10 +287,12 @@ public class MenuController : MonoBehaviour
     }
 
     public void onClickReturnToMenu(){
+        saveStars.loadStarsInPrefabs();
         SceneManager.LoadScene("Menu_Rocket");
     }
 
     public void onClickRestart(){
+        saveStars.loadStarsInPrefabs();
         SceneManager.LoadScene("Scene_Merging");
     }
 
@@ -292,28 +320,30 @@ public class MenuController : MonoBehaviour
 
     IEnumerator waitForSecondsPowerUpShield(GameObject powerUp){
         float duration = powerUpDuration + PlayerPrefs.GetInt("UpgradeShieldLevel");
-
-
+        isShieldUp = true;
         rocket.GetComponent<AsteroidCollision>().shieldIsUp = true;
         yield return new WaitForSeconds(duration);
         rocket.GetComponent<AsteroidCollision>().shieldIsUp = false;
+        isShieldUp = false;
         Destroy(powerUp);
     }
 
     IEnumerator waitForSecondsX2Star(float time){
         float duration = time + PlayerPrefs.GetInt("UpgradeX2Level");
-
+        is2xUp = true;
         rocket.GetComponent<Collectable>().startCollectedNumber = 2;
         yield return new WaitForSeconds(duration);
         rocket.GetComponent<Collectable>().startCollectedNumber = 1;
+        is2xUp = false;
     }
 
     IEnumerator waitForSecondsMagnetism(){
         float duration = 10f + PlayerPrefs.GetInt("UpgradeMagLevel");
-
+        isMagnecticUp = true;
         starsParticle.GetComponent<ParticleAttract>().speed =  5f;
         yield return new WaitForSeconds(duration);
         starsParticle.GetComponent<ParticleAttract>().speed =  0f;
+        isMagnecticUp = false;
     }
 
     public void showFloatingText(string text){

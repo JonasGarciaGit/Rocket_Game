@@ -29,7 +29,6 @@ public class AdmobController : MonoBehaviour
     [SerializeField]
     private Text starsEanred;
 
-
     [SerializeField]
     Button BtnReward;
 
@@ -41,7 +40,7 @@ public class AdmobController : MonoBehaviour
     [SerializeField]
     Button btnPlayAgain;
 
-    int starsAmount;
+    [SerializeField] SaveStarsAmount saveStars;
 
     private bool alreadyWatchAds = false;
     
@@ -170,10 +169,8 @@ public class AdmobController : MonoBehaviour
     {
         if (alreadyWatchAds == false)
         {
-            starsAmount = collectable.getStarsAmount();
-            int stars = PlayerPrefs.GetInt("Stars");
-            stars = stars + starsAmount;
-            PlayerPrefs.SetInt("Stars", stars);
+            int starsAmount = collectable.getStarsAmount();
+            saveStars.addStars(starsAmount);
             starsEanred.text = (starsAmount + starsAmount).ToString();
             alreadyWatchAds = true;
         }

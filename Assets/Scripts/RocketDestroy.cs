@@ -24,6 +24,7 @@ public class RocketDestroy : MonoBehaviour
 
     private bool isDie;
 
+    [SerializeField] SaveStarsAmount saveStars;
 
     private void Start()
     {
@@ -55,19 +56,18 @@ public class RocketDestroy : MonoBehaviour
 
     public void onDie()
     {
-        addStars();
         addScorePoints();
         StartCoroutine(dieCoroutine());
         //SceneManager.LoadSceneAsync("Menu_Rocket");
     }
 
-    public void addStars()
+  /*  public void addStars()
     {
         int stars = PlayerPrefs.GetInt("Stars");
         stars = stars + collectable.getStarsAmount();
         PlayerPrefs.SetInt("Stars", stars);
     }
-
+  */
     public void addScorePoints()
     {
         int bestScore = PlayerPrefs.GetInt("Score");
@@ -97,6 +97,7 @@ public class RocketDestroy : MonoBehaviour
         preventRocketGetOutView.enabled = true;
         gameOverInterface.SetActive(true);
         starsAmountText.text = collectable.getStarsAmount().ToString();
+        saveStars.addStars(collectable.getStarsAmount());
     }
 
 
