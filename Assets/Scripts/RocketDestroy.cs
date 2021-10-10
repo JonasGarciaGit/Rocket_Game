@@ -14,7 +14,7 @@ public class RocketDestroy : MonoBehaviour
 
     public RocketMovement rocketMove;
 
-    private GameObject vfxPropulsion;
+    public GameObject vfxPropulsion;
 
     public PreventRocketGetOutView preventRocketGetOutView;
 

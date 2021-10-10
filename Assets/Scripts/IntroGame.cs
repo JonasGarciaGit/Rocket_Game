@@ -30,6 +30,8 @@ public class IntroGame : MonoBehaviour
     public GameObject powerUpButton;
     public Material materialPowerUp;
 
+    public GameObject buttonPowerUp;
+
     public Text bestScore;
 
     // Start is called before the first frame update
@@ -38,9 +40,22 @@ public class IntroGame : MonoBehaviour
 
         for (int i= 0; i < rocket.transform.childCount; i++)
         {
+            string name = PlayerPrefs.GetString("Rocket_Equiped_Name");
+
+            if ("".Equals(name))
+            {
+                name = "Rocket1";
+            }
+
+            if (name.Equals(rocket.transform.GetChild(i).gameObject.name))
+            {
+                rocket.transform.GetChild(i).gameObject.SetActive(true);
+            }
+
             if (rocket.transform.GetChild(i).gameObject.active)
             {
                 vfxPropulsion = rocket.transform.GetChild(i).Find("vfx_propulsion").gameObject;
+                GameObject.Find("Rocket_Sculpt").GetComponent<RocketDestroy>().vfxPropulsion = vfxPropulsion;
             }
         }
         
@@ -58,6 +73,7 @@ public class IntroGame : MonoBehaviour
         powerUpSpawner.SetActive(false);
         fuelBar.SetActive(false);
         fuelFill.SetActive(false);
+        buttonPowerUp.SetActive(false);
         materialPowerUp.SetColor("Color_ba20f8732d69407d8e52f3d6041799d7",new Color(255,255,255,250) / 30);
         powerUpButton.SetActive(false);
         controlTimerTemp = rocket.GetComponent<Fuel>().controlTimer;
@@ -85,6 +101,7 @@ public class IntroGame : MonoBehaviour
             fuelBar.SetActive(true);
             fuelFill.SetActive(true);
             powerUpButton.SetActive(true);
+            buttonPowerUp.SetActive(true);
             rocket.GetComponent<Fuel>().controlTimer = controlTimerTemp;
         }
     }
