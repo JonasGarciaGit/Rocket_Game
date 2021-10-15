@@ -2207,9 +2207,17 @@ PrefabInstance:
       propertyPath: shopButton
       value: 
       objectReference: {fileID: 1235555983}
+    - target: {fileID: 7885495175526588723, guid: 42b78d04b13589f4581d033ffc8647e8, type: 3}
+      propertyPath: publishingApp
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7885495175526588725, guid: 42b78d04b13589f4581d033ffc8647e8, type: 3}
       propertyPath: m_Name
       value: AdsController
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885495175526588725, guid: 42b78d04b13589f4581d033ffc8647e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42b78d04b13589f4581d033ffc8647e8, type: 3}
@@ -2757,6 +2765,7 @@ MonoBehaviour:
   audioSource: {fileID: 1013072691}
   titleMenu: {fileID: 376518629}
   levelLoader: {fileID: 183482961}
+  saveStars: {fileID: 0}
 --- !u!1 &376518629
 GameObject:
   m_ObjectHideFlags: 0
@@ -5177,6 +5186,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1083288318}
+        m_TargetAssemblyTypeName: AdmobController, Assembly-CSharp
+        m_MethodName: ShowInterstitialAd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &721847373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5886,7 +5907,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 0d7b97918b486164d99c43de26a930b2, type: 2}
   m_audioClip: {fileID: 8300000, guid: 24ccf513808799d4e985d2d138412cfe, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

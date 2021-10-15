@@ -14721,6 +14721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9bce9a8203c4544adcd64681145b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startEvents: {fileID: 1996630509}
   background: {fileID: 1583013178}
   starsBackground: {fileID: 1254056854}
   starsCollectable: {fileID: 1637553449}
@@ -42105,6 +42106,10 @@ PrefabInstance:
       propertyPath: btnReturnMenu
       value: 
       objectReference: {fileID: 450312559}
+    - target: {fileID: 7885495175526588723, guid: 42b78d04b13589f4581d033ffc8647e8, type: 3}
+      propertyPath: publishingApp
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7885495175526588725, guid: 42b78d04b13589f4581d033ffc8647e8, type: 3}
       propertyPath: m_Name
       value: AdsController

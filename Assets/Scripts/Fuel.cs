@@ -19,6 +19,7 @@ public class Fuel : MonoBehaviour
     public event Action<float> OnFuelPctChanged = delegate {};
 
 
+
     private void OnEnable() {
         currentFuel = maxFuel;
         decaySpeed = -10;    
@@ -55,7 +56,12 @@ public class Fuel : MonoBehaviour
         }
         
         if(currentFuel <= 0){
-            this.gameObject.GetComponent<RocketDestroy>().onDie();
+            if(this.gameObject.GetComponent<RocketDestroy>().isDie == false)
+            {
+                this.gameObject.GetComponent<RocketDestroy>().onDie();
+         
+            }
+            
         }
     }
 }

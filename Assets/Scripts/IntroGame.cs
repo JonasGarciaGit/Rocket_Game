@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class IntroGame : MonoBehaviour
 {
+    public GameObject startEvents;
     public GameObject background;
     public GameObject starsBackground;
     public GameObject starsCollectable;
@@ -73,6 +74,7 @@ public class IntroGame : MonoBehaviour
         rocket.GetComponent<RocketMovementAcelerometer>().enabled = false;
         rocket.GetComponent<RocketMovement>().enabled = false;
         start = false;
+        startEvents.SetActive(false);
         vfxPropulsion.SetActive(false);
         starsBackground.SetActive(false);
         starsCollectable.SetActive(false);
@@ -109,6 +111,7 @@ public class IntroGame : MonoBehaviour
             fuelFill.SetActive(true);
             powerUpButton.SetActive(true);
             buttonPowerUp.SetActive(true);
+            startEvents.SetActive(true);
             rocket.GetComponent<Fuel>().controlTimer = controlTimerTemp;
         }
     }

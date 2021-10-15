@@ -136,8 +136,6 @@ public class AdmobController : MonoBehaviour
     public void OnMoreStarsClicked()
     {
         BtnReward.interactable = false;
-        btnPlayAgain.interactable = false;
-        btnReturnMenu.interactable = false;
         BtnReward.GetComponentInChildren<Text>().text = "Loading...";
         RequestRewardAd();
     }
@@ -181,8 +179,6 @@ public class AdmobController : MonoBehaviour
     public void HandleOnRewardedAdClosed(object sender, EventArgs args)
     {
         BtnReward.interactable = false;
-        btnPlayAgain.interactable = true;
-        btnReturnMenu.interactable = true;
         BtnReward.GetComponentInChildren<Text>().text = "Reward redeemed!";
         rewardedAd.OnAdLoaded -= this.HandleOnRewardedAdLoaded;
         rewardedAd.OnAdRewarded -= this.HandleOnAdRewarded;

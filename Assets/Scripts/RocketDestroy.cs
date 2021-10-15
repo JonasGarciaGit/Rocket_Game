@@ -22,7 +22,7 @@ public class RocketDestroy : MonoBehaviour
 
     public Text starsAmountText;
 
-    private bool isDie;
+    public bool isDie;
 
     [SerializeField] SaveStarsAmount saveStars;
 
