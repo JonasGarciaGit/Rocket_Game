@@ -378,6 +378,7 @@ MonoBehaviour:
   preventRocketGetOutView: {fileID: 0}
   gameOverInterface: {fileID: 2104706780}
   starsAmountText: {fileID: 2146773525}
+  isDie: 0
   saveStars: {fileID: 958158588}
 --- !u!114 &49345214
 MonoBehaviour:
@@ -8498,7 +8499,7 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: d25b07713def47647837092d7e3a4941, type: 3}
   - {fileID: 8300000, guid: 020e487d5fc7485478a5e354d28d47ed, type: 3}
-  - {fileID: 8300000, guid: 21029c804710fc34cb349c789055d15a, type: 3}
+  - {fileID: 8300000, guid: 87485b52c3fd99b40bb5618fe01f5539, type: 3}
   - {fileID: 8300000, guid: d5a6a86409f3512418749552932928ce, type: 3}
   - {fileID: 8300000, guid: cbf8b843fe697d84387e651dd4fe510b, type: 3}
   - {fileID: 8300000, guid: df6ab86fc8b91cc41b604107040bf19a, type: 3}
@@ -14721,7 +14722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9bce9a8203c4544adcd64681145b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startEvents: {fileID: 1996630509}
+  startEvents: {fileID: 0}
   background: {fileID: 1583013178}
   starsBackground: {fileID: 1254056854}
   starsCollectable: {fileID: 1637553449}
@@ -37188,7 +37189,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1637553449}
   serializedVersion: 7
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 1.6
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -42106,10 +42107,6 @@ PrefabInstance:
       propertyPath: btnReturnMenu
       value: 
       objectReference: {fileID: 450312559}
-    - target: {fileID: 7885495175526588723, guid: 42b78d04b13589f4581d033ffc8647e8, type: 3}
-      propertyPath: publishingApp
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7885495175526588725, guid: 42b78d04b13589f4581d033ffc8647e8, type: 3}
       propertyPath: m_Name
       value: AdsController

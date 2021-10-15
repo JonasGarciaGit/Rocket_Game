@@ -54,6 +54,6 @@ public class Playlist : MonoBehaviour
         yield return new WaitForSeconds(15f);
         audioSource = this.gameObject.GetComponent<AudioSource>();
         audioSource.loop = false;
-        audioSource.volume = 0.1f;
+        audioSource.volume = 0.3f;
     }
 }
