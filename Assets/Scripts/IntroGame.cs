@@ -67,7 +67,11 @@ public class IntroGame : MonoBehaviour
             }
         }
 
-       
+        if (startEvents == null)
+        {
+            startEvents = new GameObject();
+        }
+
         stopWatchTime = 10;
         stopWatch.text = "10";
         stopWatch.gameObject.SetActive(false);

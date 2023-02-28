@@ -392,7 +392,7 @@ public class MenuController : MonoBehaviour
 
 
         rocketModel = Instantiate(rocketsPrefabs[controlRocketList], rocketSlot.transform.position, Quaternion.identity);
-        rocketModel.transform.localScale = new Vector3(3,3,3);
+        rocketModel.transform.localScale = new Vector3(2,2,2);
         rocketModel.AddComponent<SimpleRotateObject>();
         rocketPrice.text = rocketsPrice[controlRocketList].ToString();
     }
